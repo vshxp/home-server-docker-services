@@ -1,0 +1,56 @@
+version: "2"
+services:
+  qbittorrent:
+    image: linuxserver/qbittorrent
+    container_name: qbittorrent
+    environment:
+    - PUID=1000
+    - PGID=100
+    - TZ=Europe/London
+    - UMASK_SET=022
+    - WEBUI_PORT=9003
+    volumes:
+    - ~/.docker-storage/qbittorrent/config:/config
+    - ~/Downloads:/downloads/
+    ports:
+    - 6881:6881
+    - 6881:6881/udp
+    - 9003:9003
+    restart: unless-stopped
+    networks: 
+    - vlan_htpc 
+
+  embyserver:
+    image: emby/embyserver:latest
+    container_name: emby-server
+    volumes:
+    - ~/.docker-storage/emby/data:/var/lib/emby
+    - ~/.docker-storage/emby/config:/config
+    - ~:/mnt/media
+    ports:
+    - 9005:8096
+    environment:
+    - UID=1000
+    - GID=100
+    - GIDLIST=100
+    restart: unless-stopped
+    networks: 
+    - vlan_htpc 
+
+  youtube-dl:
+    image: kmb32123/youtube-dl-server
+    container_name: youtube-dl
+    environment:
+    - UID=1000
+    - GID=100
+    - GIDLIST=100
+    ports:
+    - 9004:8080
+    volumes:
+      - ~/Files/youtube-dl:/youtube-dl
+    restart: unless-stopped
+    networks: 
+    - vlan_htpc 
+
+networks:
+  vlan_htpc:
