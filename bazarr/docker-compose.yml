@@ -1,0 +1,23 @@
+version: "2"
+services:
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Sao_Paulo
+    volumes:
+      - ~/Storage/Docker/bazarr/config:/config
+      - ~/Storage/Tv-Shows:/storage/tv-shows
+      - ~/Storage/Movies:/storage/movies
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+    networks:
+      - media
+
+networks:
+  media:
+    name: media
+    external: true
