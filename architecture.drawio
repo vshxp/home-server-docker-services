@@ -1,0 +1,61 @@
+<mxfile host="65bd71144e">
+    <diagram id="U0cBu_YSkR7BM3933Cyo" name="Page-1">
+        <mxGraphModel dx="1372" dy="602" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="12" style="edgeStyle=none;html=1;" edge="1" parent="1" source="2" target="9">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="Proxmox" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_on_premise;strokeColor=#5A6C86;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#5A6C86;dashed=0;spacingTop=0;" vertex="1" parent="1">
+                    <mxGeometry x="69" y="130" width="301" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Prod - Ubuntu 22.04" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;sketch=0;align=center;verticalAlign=top;" vertex="1" parent="2">
+                    <mxGeometry x="21" y="40" width="120" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Docker" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;sketch=0;" vertex="1" parent="2">
+                    <mxGeometry x="29" y="140" width="104" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="8vCPU&lt;br&gt;24Gb SDRAM&lt;br&gt;NVME 120Gb" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="2">
+                    <mxGeometry x="29" y="70" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="69" y="430" width="302" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="OpenZFS" style="rounded=0;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=top;" vertex="1" parent="10">
+                    <mxGeometry width="302" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="sda&lt;br&gt;8Tb" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.hard_disk;" vertex="1" parent="10">
+                    <mxGeometry x="16" y="33" width="40" height="54" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="sdb&lt;br&gt;8Tb" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.hard_disk;" vertex="1" parent="10">
+                    <mxGeometry x="74" y="33" width="40" height="54" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="sdb&lt;br&gt;8Tb" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.hard_disk;" vertex="1" parent="10">
+                    <mxGeometry x="131" y="33" width="40" height="54" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="sdd&lt;br&gt;8Tb" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.hard_disk;" vertex="1" parent="10">
+                    <mxGeometry x="189" y="33" width="40" height="54" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="sde&lt;br&gt;8Tb" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.hard_disk;" vertex="1" parent="10">
+                    <mxGeometry x="246" y="33" width="40" height="54" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="&lt;span style=&quot;&quot;&gt;8 CPU&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;32 Gb SDRAM&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;NVME 512Gb&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;sketch=0;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="320" width="280" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="FISICAL HOST" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;sketch=0;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="238" y="335" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="Prod - Ubuntu 22.04" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;sketch=0;align=center;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="171" width="120" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="Docker" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;sketch=0;" vertex="1" parent="1">
+                    <mxGeometry x="238" y="271" width="104" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="8vCPU&lt;br&gt;24Gb SDRAM&lt;br&gt;NVME 120Gb" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="238" y="201" width="100" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
