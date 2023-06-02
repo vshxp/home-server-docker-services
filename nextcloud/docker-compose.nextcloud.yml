@@ -1,0 +1,39 @@
+---
+version: "2"
+services:
+  app:
+    container_name: nextcloud
+    image: nextcloud
+    restart: always
+    ports:
+      - 8443:80
+    volumes:
+      - ~/Storage/Docker/nextcloud/config:/config
+      - ~/Storage/Docker/nextcloud/data:/storage/data
+      - ~/Storage/Docker/nextcloud/html:/var/www/html
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=${POSTGRES_DATABASE}
+      - POSTGRES_USER=${POSTGRES_USER} 
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    depends_on:
+      - db
+    networks:
+      - nextcloud
+
+  db:
+    container_name: nextcloud-db
+    image: postgres:15
+    restart: unless-stopped
+    hostname: db
+    volumes:
+      - ~/Storage/Docker/nextcloud/db/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DATABASE}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    networks:
+      - nextcloud 
+
+networks:
+  nextcloud:
