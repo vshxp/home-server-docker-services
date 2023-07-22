@@ -6,14 +6,17 @@ docker-compose up -d
 ```
 
 2. Edit the Config Files 
-    - `warmod/admins_simple.ini`
+    - `warmod/admins_simple.ini` -> Add your steam ID
+    - `LinuxGSM/commom.cfg`      -> Add your STEAM TOKEN
+
 2. Install the competitive mods
-This command will run a script to move the config files to the right place and also will install metamod and Sourcemod
+This command will give execution permission to script and it will install the plugins Metamod & Sourcemod and also will install the configuration files.
 ```
-./mod_install.sh
+chmod +x installer.sh
+./installer.sh
 ```
 
 3. Join the server
 ```
-connect cobrateam.servegame.com:27015;password cobramito
+connect YOUR_SERER_IP:27015;password YOUR_SERVER_PASSWORD
 ```
