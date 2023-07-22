@@ -5,16 +5,12 @@
 docker-compose up -d
 ```
 
-2. Install the requirements
-join the container and run
-```
-
-```
-
+2. Edit the Config Files 
+    - `warmod/admins_simple.ini`
 2. Install the competitive mods
-this command will install Warmod
+This command will run a script to move the config files to the right place and also will install metamod and Sourcemod
 ```
-cp mods/warmod.smx ~/Storage/Docker/steam/csgo/serverfiles/csgo/addons/sourcemod/plugins
+./mod_install.sh
 ```
 
 3. Join the server
