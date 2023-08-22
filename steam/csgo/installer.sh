@@ -4,7 +4,7 @@
 ################################### PATH VARIABLES #####################################
 ########################################################################################
 
-SERVER_PATH="~/Storage/Docker/steam/csgo-test"
+SERVER_PATH="~/Storage/Docker/steam/csgo"
 
 ########################################################################################
 ########################## DO NOT CHANGE ANYTHING ABOVE HERE! ##########################
@@ -73,4 +73,12 @@ echo "  Configuring Admins"
 cp ./warmod/admins_simple.ini  $SERVER_PATH/serverfiles/csgo/addons/sourcemod/configs/
 check_command_status "Admin" "install"
 
+echo "  Adding custom configs"
+cp ./configs/motd.txt $SERVER_PATH/serverfiles/csgo/motd.txt
+check_command_status "Custom configs" "install"
+
+
 echo "All plugins installed successfully."
+
+
+

@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  linuxgsm-vh-bind:
+    image: gameservermanagers/gameserver:vh
+    container_name: vhserver
+    restart: unless-stopped
+    volumes:
+      - ~/Storage/Docker/steam/valheim:/data
+    ports:
+     - 2456:2456/udp
+     - 2456:2456/tcp
+    user: $UID:$GID
