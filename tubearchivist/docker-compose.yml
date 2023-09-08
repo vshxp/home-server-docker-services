@@ -1,0 +1,67 @@
+---
+version: '3.3'
+services:
+  tubearchivist:
+    container_name: tubearchivist
+    restart: unless-stopped
+    image: bbilly1/tubearchivist
+    ports:
+      - 4848:8000
+    volumes:
+      - ~/Storage/Tubesync:/youtube
+      - cache:/cache
+    environment:
+      - ES_URL=http://archivist-es:9200
+      - REDIS_HOST=archivist-redis
+      - HOST_UID=1000
+      - HOST_GID=1000
+      - TA_HOST=${TA_HOST}
+      - TA_USERNAME="ADMINISTRADOR"
+      - TA_PASSWORD="ADMINISTRADOR"
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - TZ=${TZ}
+    depends_on:
+      - archivist-es
+      - archivist-redis
+    networks:
+      - media
+
+  archivist-redis:
+    image: redis/redis-stack-server
+    container_name: archivist-redis
+    restart: unless-stopped
+    volumes:
+      - redis:/data
+    depends_on:
+      - archivist-es
+    networks:
+      - media
+    
+  archivist-es:
+    image: bbilly1/tubearchivist-es
+    container_name: archivist-es
+    restart: unless-stopped
+    environment:
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "xpack.security.enabled=true"
+      - "discovery.type=single-node"
+      - "path.repo=/usr/share/elasticsearch/data/snapshot"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es:/usr/share/elasticsearch/data
+    networks:
+      - media
+
+volumes:
+  cache:
+  redis:
+  es:
+
+networks:
+  media:
+    name: media
+    external: true

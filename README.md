@@ -14,6 +14,13 @@ Just run the install command.
 ./debian-docker-auto-installer.sh
 ```
 
+## Creating Docker Network
+
+```shell
+docker network create -d bridge media
+```
+
+
 # Organization Service
 
 ## Homer

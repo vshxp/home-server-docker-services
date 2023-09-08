@@ -1,0 +1,31 @@
+version: '3.3'
+services:
+  tdarr:
+    image: haveagitgat/tdarr
+    container_name: tdarr
+    volumes:
+      - '~/Storage/Tv-Shows:/home/Tdarr/Media/tv-shows'
+      - '~/Storage/Docker/tdadd/app:/app/server'
+      - '~/Storage/Docker/tdadd/configs:/app/configs'
+      - '~/Storage/Docker/tdadd/logs:/app/logs'
+    environment:
+      - serverIP=0.0.0.0
+      - webUIPort=8265
+      - serverPort=8266
+      - TZ=America/Sao_Paulo
+      - PUID=1000
+      - PGID=1000
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - NVIDIA_VISIBLE_DEVICES=all
+    networks:
+      - media
+    ports:
+      - '8265:8265'
+      - '8266:8266'
+    # logging:
+    #   options: 'max-size=10m,max-file=5'
+
+networks:
+  media:
+    name: media
+    external: true

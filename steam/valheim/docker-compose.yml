@@ -9,4 +9,3 @@ services:
     ports:
      - 2456:2456/udp
      - 2456:2456/tcp
-    user: $UID:$GID
