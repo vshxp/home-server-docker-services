@@ -18,9 +18,9 @@ services:
       - 21027:21027/udp
     restart: unless-stopped
     networks:
-      - media
+      - services
 
 networks:
   media:
-    name: media
+    name: services
     external: true

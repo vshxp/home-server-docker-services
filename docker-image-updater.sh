@@ -10,7 +10,7 @@ docker pull fallenbagel/jellyseerr:latest
 docker pull ghcr.io/meeb/tubesync:latest
 docker pull golift/notifiarr
 docker pull b4bz/homer
-docker pull 'portainer/portainer-ce:latest'
+docker pull portainer/portainer-ce:latest
 docker pull postgres:15-alpine
 docker pull joplin/server:latest
 docker pull dpage/pgadmin4
