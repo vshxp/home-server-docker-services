@@ -12,6 +12,6 @@ services:
       - services
 
 networks:
-  media:
+  services:
     name: services
     external: true

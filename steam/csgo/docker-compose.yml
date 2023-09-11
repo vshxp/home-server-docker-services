@@ -14,3 +14,10 @@ services:
     restart: unless-stopped
     user: $UID:$GID
     network_mode: "host"
+    networks:
+      - steam
+
+networks:
+  steam:
+    name: steam
+    external: true
