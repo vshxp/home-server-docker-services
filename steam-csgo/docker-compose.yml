@@ -13,7 +13,6 @@ services:
       - "27005:27005/udp"
     restart: unless-stopped
     user: $UID:$GID
-    network_mode: "host"
     networks:
       - steam
 

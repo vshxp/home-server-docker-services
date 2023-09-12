@@ -16,7 +16,7 @@ echo "Checking if 7zip is installed..."
 # Check if 7zip (p7zip) is installed using dnf package manager
 if ! command -v 7z &>/dev/null; then
     echo "7zip (p7zip) is not installed. Installing it..."
-    sudo dnf install -y p7zip
+    sudo apt install p7zip p7zip-rar p7zip-full 7zip -y
     if [ $? -ne 0 ]; then
         echo "[ERROR] Failed to install 7zip (p7zip). Exiting..."
         exit 1

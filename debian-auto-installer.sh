@@ -1,14 +1,5 @@
 #!/bin/bash
 
-check_sudo() {
-  #check if the script was executed by sudo
-
-  if [ "$EUID" -ne 0 ]; then
-    echo "This script must be run with sudo."
-    exit 1
-  fi
-}
-
 check_docker() {
   #Check if a docker is installed, if not install it
 
@@ -16,21 +7,21 @@ check_docker() {
     echo "Docker is installed."
   else
     echo "Docker is not installed."
-    apt update
-    apt remove docker docker-engine docker.io -y
+    sudo apt update
+    sudo apt remove docker docker-engine docker.io -y
 
-    apt install apt-transport-https \
+    sudo apt install apt-transport-https \
     ca-certificates \
     curl \
     software-properties-common \
     docker-compose -y
 
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
-    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable" 
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable" 
 
-    apt update
-    apt install docker-ce
-    usermod -aG docker $USER
+    sudo apt update
+    sudo apt install docker-ce
+    sudo usermod -aG docker $USER
     clear
     echo '[DONE] Docker Install'
   fi
@@ -52,42 +43,37 @@ check_docker_network() {
 
 pull_docker_images(){
   # get and update all docker images
+  # Use 'grep' to find the image lines and then 'awk' to extract the image names
+  # then for each image perform docker pull
 
   for dir in ./*; do
-      if [[ -d "$dir" ]]; then
-      echo "updating image: $dir"
-          
-          # Use 'grep' to find the image lines and then 'awk' to extract the image names
-          images=$(grep -E '^\s+image:' "$dir/docker-compose.yml" | awk '{print $2}')
-          for image in $images; do
-              # docker pull $image 
-              perform_docker_pull $image &
-          done
-      fi
+    if [[ -d "$dir" ]]; then
+    echo "updating image: $dir"
+      images=$(grep -E '^\s+image:' "$dir/docker-compose.yml" | awk '{print $2}')
+      for image in $images; do
+        perform_docker_pull $image &
+      done
+    fi
   done
 }
 
 perform_docker_pull() {
-  # Function to perform docker pull
   docker pull $1
 }
 
 run_docker_compose(){
   # Loop through each subdirectory and perform docker-compose up -d
-  # path="."
-  # for dir in "$path"/*; do
   for dir in ./*; do
     if [[ -d "$dir" ]]; then
-        # perform_docker_compose "$dir" &
-        (cd "$dir" && docker-compose up -d && cd ..)
+      (cd "$dir" && docker-compose up -d && cd ..)
     fi
   done
+
   # Wait for all background processes to complete
   wait
   echo "All docker images running"
 }
 
-check_sudo
 check_docker
 check_docker_network "media"
 check_docker_network "services"
