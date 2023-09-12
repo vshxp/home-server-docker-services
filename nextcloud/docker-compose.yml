@@ -19,7 +19,7 @@ services:
     depends_on:
       - db
     networks:
-      - nextcloud
+      - services
 
   db:
     container_name: nextcloud-db
@@ -33,7 +33,9 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     networks:
-      - nextcloud 
+      - services 
 
 networks:
-  nextcloud:
+  services:
+    name: services
+    external: true

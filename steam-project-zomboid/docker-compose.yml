@@ -12,3 +12,10 @@ services:
       - 16261:16261/tcp
       - 16262:16262/udp
       - 16262:16262/tcp
+    networks:
+      - steam
+
+networks:
+  steam:
+    name: steam
+    external: true

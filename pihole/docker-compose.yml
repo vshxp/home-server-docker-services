@@ -16,9 +16,9 @@ services:
       - '~/Storage/Docker/pihole/etc/dnsmasq.d:/etc/dnsmasq.d'
     restart: unless-stopped
     networks:
-      - media
+      - services
 
 networks:
-  media:
-    name: media
+  services:
+    name: services
     external: true

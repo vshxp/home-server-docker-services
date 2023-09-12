@@ -13,3 +13,9 @@ services:
       - 9696:9696
     restart: unless-stopped
     networks:
+      - media
+
+networks:
+  media:
+    name: media
+    external: true

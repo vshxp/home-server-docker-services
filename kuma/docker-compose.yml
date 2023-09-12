@@ -8,3 +8,10 @@ services:
         - '~/Storage/Docker/uptime-kuma/data:/app/data'
     container_name: uptime-kuma
     image: 'louislam/uptime-kuma:1'
+    networks:
+      - services
+
+networks:
+  services:
+    name: services
+    external: true
