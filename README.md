@@ -1,25 +1,12 @@
 # Home server docker services
 List of docker services
 
-## Requirements
-- docker
-- docker-compose
-
 ## How to install
 Just run the install command.
+
 ```bash
-./fedora-docker-auto-installer.sh
+./debian-auto-installer.sh
 ```
-```bash
-./debian-docker-auto-installer.sh
-```
-
-## Creating Docker Network
-
-```shell
-docker network create -d bridge media
-```
-
 
 # Organization Service
 

@@ -74,6 +74,8 @@ run_docker_compose(){
   echo "All docker images running"
 }
 
+
+
 check_docker
 check_docker_network "media"
 check_docker_network "services"
