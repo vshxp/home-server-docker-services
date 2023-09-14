@@ -83,7 +83,7 @@ run_auto_setup(){
   # Loop through each subdirectory and run auto_configure.sh script to auto configure the service 
   for dir in ./*; do
     if [[ -d "$dir" ]]; then
-      (cd "$dir" && docker-compose up -d && cd ..)
+      (cd "$dir" && sh auto_configure.sh && cd ..)
     fi
   done
 
