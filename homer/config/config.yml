@@ -42,7 +42,6 @@ colors:
     background-image: "../assets/wallpaper.jpeg"
 
 services:
-
   - name: "Services"
     items:
       - name: "Emby"
@@ -124,7 +123,6 @@ services:
         url: "http://192.168.3.10:5454/"
         target: "_blank"
 
-
   - name: "Admin"
     items:
       - name: "Cockpit"
@@ -168,7 +166,3 @@ services:
         tagstyle: "is-danger" 
         url: "http://192.168.3.10:3001/"
         target: "_blank"
-
-  # - name: "Development"
-  #   items:
-
