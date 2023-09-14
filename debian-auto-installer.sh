@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
+
+export DOCKER_STORAGE_PATH="~/Storage/Docker"
+
+
 check_docker() {
   #Check if a docker is installed, if not install it
 
@@ -74,7 +79,18 @@ run_docker_compose(){
   echo "All docker images running"
 }
 
+run_auto_setup(){
+  # Loop through each subdirectory and run auto_configure.sh script to auto configure the service 
+  for dir in ./*; do
+    if [[ -d "$dir" ]]; then
+      (cd "$dir" && docker-compose up -d && cd ..)
+    fi
+  done
 
+  # Wait for all background processes to complete
+  wait
+  echo "All docker images running"
+}
 
 check_docker
 check_docker_network "media"
@@ -82,3 +98,5 @@ check_docker_network "services"
 check_docker_network "steam"
 pull_docker_images
 run_docker_compose
+
+
