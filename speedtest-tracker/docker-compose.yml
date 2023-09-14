@@ -1,0 +1,44 @@
+---
+version: '3.8'
+services:
+  speedtest-tracker:
+    container_name: speedtest-tracker
+    image: 'ghcr.io/alexjustesen/speedtest-tracker:latest'
+    ports:
+      - '8765:80'
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - DB_CONNECTION=${DB_CONNECTION}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - TZ=America/Chicago
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ~/Storage/Docker/speedtest-tracker/cconfig:/config
+    restart: unless-stopped
+    depends_on:
+      - db
+    networks:
+      - services
+
+  db:
+    image: postgres:15-alpine
+    restart: always
+    container_name: speedtest-tracker-db
+    environment:
+      - POSTGRES_DB=${DB_DATABASE}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ~/Storage/Docker/speedtest-tracker/database/data:/var/lib/postgresql/data
+    networks:
+      - services
+
+networks:
+  services:
+    name: services
+    external: true

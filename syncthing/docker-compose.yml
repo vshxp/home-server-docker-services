@@ -1,4 +1,4 @@
-version: "2"
+version: "3.8"
 services:
   syncthing:
     image: lscr.io/linuxserver/syncthing:latest

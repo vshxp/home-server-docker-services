@@ -1,5 +1,5 @@
 ---
-version: "2"
+version: "3.8"
 services:
   app:
     container_name: nextcloud
@@ -23,7 +23,7 @@ services:
 
   db:
     container_name: nextcloud-db
-    image: postgres:15
+    image: postgres:15-alpine
     restart: unless-stopped
     hostname: db
     volumes:
