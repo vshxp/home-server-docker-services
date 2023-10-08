@@ -26,7 +26,10 @@ check_docker() {
 
     sudo apt update
     sudo apt install docker-ce
+    sudo groupadd docker
     sudo usermod -aG docker $USER
+    newgrp docker
+
     clear
     echo '[DONE] Docker Install'
   fi
@@ -97,6 +100,7 @@ check_docker_network "media"
 check_docker_network "services"
 check_docker_network "steam"
 pull_docker_images
+wait
 run_docker_compose
 
 

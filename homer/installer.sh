@@ -1,0 +1,1 @@
+cp ./config/config.yml ~/Storage/Docker/homer/assets/config.yml
