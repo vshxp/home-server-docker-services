@@ -3,31 +3,31 @@ version: "3.8"
 services:
   app:
     container_name: nextcloud
-    image: nextcloud
+    image: nextcloud:latest
     restart: always
     ports:
       - 8443:80
     volumes:
-      - ~/Storage/Docker/nextcloud/config:/config
-      - ~/Storage/Docker/nextcloud/data:/storage/data 
-      - ~/Storage/Docker/nextcloud/html:/var/www/html
+      - ~/Storage/Docker/nextcloud2/config:/config
+      - ~/Storage/Docker/nextcloud2/data:/storage/data 
+      - ~/Storage/Docker/nextcloud2/html:/var/www/html
     environment:
-      - POSTGRES_HOST=db
+      - POSTGRES_HOST=db_nextcloud
       - POSTGRES_DB=${POSTGRES_DATABASE}
       - POSTGRES_USER=${POSTGRES_USER} 
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     depends_on:
-      - db
+      - db_nextcloud
     networks:
       - services
 
-  db:
+  db_nextcloud:
     container_name: nextcloud-db
     image: postgres:15-alpine
     restart: unless-stopped
-    hostname: db
+    hostname: db_nextcloud
     volumes:
-      - ~/Storage/Docker/nextcloud/db/data:/var/lib/postgresql/data
+      - ~/Storage/Docker/nextcloud2/db/data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=${POSTGRES_DATABASE}
       - POSTGRES_USER=${POSTGRES_USER}

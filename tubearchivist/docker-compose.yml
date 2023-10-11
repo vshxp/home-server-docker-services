@@ -16,8 +16,8 @@ services:
       - HOST_UID=1000
       - HOST_GID=1000
       - TA_HOST=${TA_HOST}
-      - TA_USERNAME="ADMINISTRADOR"
-      - TA_PASSWORD="ADMINISTRADOR"
+      - TA_USERNAME="administrador"
+      - TA_PASSWORD="administrador"
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
       - TZ=${TZ}
     depends_on:

@@ -72,7 +72,7 @@ perform_docker_pull() {
 run_docker_compose(){
   # Loop through each subdirectory and perform docker-compose up -d
   for dir in ./*; do
-    if [[ -d "$dir" ]]; then
+    if [[ -d "$dir" && ! "$dir" == *steam*  && ! "$dir" == *pihole* ]]; then
       (cd "$dir" && docker-compose up -d && cd ..)
     fi
   done

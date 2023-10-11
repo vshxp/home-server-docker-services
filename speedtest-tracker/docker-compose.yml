@@ -3,9 +3,9 @@ version: '3.8'
 services:
   speedtest-tracker:
     container_name: speedtest-tracker
-    image: 'ghcr.io/alexjustesen/speedtest-tracker:latest'
+    image: ghcr.io/alexjustesen/speedtest-tracker:latest
     ports:
-      - '8765:80'
+      - 8765:80
     environment:
       - PUID=1000
       - PGID=1000
@@ -18,14 +18,13 @@ services:
       - TZ=America/Chicago
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ~/Storage/Docker/speedtest-tracker/cconfig:/config
     restart: unless-stopped
     depends_on:
-      - db
+      - db_speedtracker
     networks:
       - services
 
-  db:
+  db_speedtracker:
     image: postgres:15-alpine
     restart: always
     container_name: speedtest-tracker-db
@@ -33,8 +32,6 @@ services:
       - POSTGRES_DB=${DB_DATABASE}
       - POSTGRES_USER=${DB_USERNAME}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
-    volumes:
-      - ~/Storage/Docker/speedtest-tracker/database/data:/var/lib/postgresql/data
     networks:
       - services
 

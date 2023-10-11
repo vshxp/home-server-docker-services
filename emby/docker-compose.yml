@@ -7,6 +7,7 @@ services:
       - '~/Storage/Docker/emby/data:/var/lib/emby'
       - '~/Storage/Docker/emby/config:/config'
       - '~/Storage:/data'
+      - '~/Storage/Courses:/data/Courses'
     ports:
       - 8096:8096
     environment:
