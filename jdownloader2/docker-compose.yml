@@ -9,6 +9,10 @@ services:
       - '~/Storage/Docker/jdownloader2/config:/config:rw'
       - '~/Storage/Downloads/http:/output:rw'
     image: jlesage/jdownloader-2
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
     networks:
       - media
 

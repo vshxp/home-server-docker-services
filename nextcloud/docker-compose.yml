@@ -1,26 +1,36 @@
 ---
 version: "3.8"
 services:
-  app:
+
+  nextcloud:
+    image: lscr.io/linuxserver/nextcloud:latest
     container_name: nextcloud
-    image: nextcloud:latest
-    restart: always
-    ports:
-      - 8443:80
-    volumes:
-      - ~/Storage/Docker/nextcloud2/config:/config
-      - ~/Storage/Docker/nextcloud2/data:/storage/data 
-      - ~/Storage/Docker/nextcloud2/html:/var/www/html
+    cap_add:
+      - SYS_ADMIN
     environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ="America/Sao_Paulo"
       - POSTGRES_HOST=db_nextcloud
       - POSTGRES_DB=${POSTGRES_DATABASE}
       - POSTGRES_USER=${POSTGRES_USER} 
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     depends_on:
       - db_nextcloud
+    volumes:
+      - ~/Storage/Docker/nextcloud2/config:/config
+      - ~/Storage/Docker/nextcloud2/data:/storage/data 
+      - ~/Storage/Docker/nextcloud2/html:/var/www/html
+    ports:
+      - 8443:80
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+    restart: unless-stopped
     networks:
       - services
-
+  
   db_nextcloud:
     container_name: nextcloud-db
     image: postgres:15-alpine
@@ -32,8 +42,12 @@ services:
       - POSTGRES_DB=${POSTGRES_DATABASE}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    deploy:
+      resources:
+        limits:
+          memory: 4096M
     networks:
-      - services 
+      - services
 
 networks:
   services:

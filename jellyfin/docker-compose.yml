@@ -18,6 +18,10 @@ services:
       - 7359:7359/udp
       - 1900:1900/udp 
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
     networks:
       - media
 

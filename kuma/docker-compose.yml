@@ -5,7 +5,11 @@ services:
     ports:
       - '3001:3001'
     container_name: uptime-kuma
-    image: 'louislam/uptime-kuma:1'
+    image: 'louislam/uptime-kuma:latest'
+    deploy:
+      resources:
+        limits:
+          memory: 256M
     networks:
       - services
 

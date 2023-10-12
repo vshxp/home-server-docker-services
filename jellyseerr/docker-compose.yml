@@ -11,6 +11,10 @@ services:
     volumes:
       - ~/Storage/Docker/jellyseerr/config:/app/config
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 256M
     networks:
       - media
 

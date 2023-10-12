@@ -16,6 +16,10 @@ services:
       - 6881:6881
       - 8080:8080
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
     networks:
       - media
 

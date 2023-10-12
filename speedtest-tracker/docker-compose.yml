@@ -4,6 +4,8 @@ services:
   speedtest-tracker:
     container_name: speedtest-tracker
     image: ghcr.io/alexjustesen/speedtest-tracker:latest
+    cap_add:
+      - SYS_ADMIN
     ports:
       - 8765:80
     environment:
@@ -15,12 +17,16 @@ services:
       - DB_DATABASE=${DB_DATABASE}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
-      - TZ=America/Chicago
+      - TZ="America/Sao_Paulo"
     volumes:
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
     depends_on:
       - db_speedtracker
+    deploy:
+      resources:
+        limits:
+          memory: 256M
     networks:
       - services
 
@@ -32,6 +38,10 @@ services:
       - POSTGRES_DB=${DB_DATABASE}
       - POSTGRES_USER=${DB_USERNAME}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     networks:
       - services
 
