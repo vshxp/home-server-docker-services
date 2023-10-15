@@ -55,7 +55,7 @@ pull_docker_images(){
   # then for each image perform docker pull
 
   for dir in ./*; do
-    if [[ -d "$dir" ]]; then
+    if [[ -d "$dir"  && ! "$dir" == *deactivated* ]]; then
     echo "updating image: $dir"
       images=$(grep -E '^\s+image:' "$dir/docker-compose.yml" | awk '{print $2}')
       for image in $images; do
