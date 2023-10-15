@@ -19,8 +19,7 @@ services:
       - db_nextcloud
     volumes:
       - ~/Storage/Docker/nextcloud2/config:/config
-      - ~/Storage/Docker/nextcloud2/data:/storage/data 
-      - ~/Storage/Docker/nextcloud2/html:/var/www/html
+      - ~/Storage/Docker/nextcloud2/user_data:/var/www/html/data
     ports:
       - 8443:80
     deploy:
@@ -37,7 +36,7 @@ services:
     restart: unless-stopped
     hostname: db_nextcloud
     volumes:
-      - ~/Storage/Docker/nextcloud2/db/data:/var/lib/postgresql/data
+      - ~/Storage/Docker/nextcloud2/database/data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=${POSTGRES_DATABASE}
       - POSTGRES_USER=${POSTGRES_USER}

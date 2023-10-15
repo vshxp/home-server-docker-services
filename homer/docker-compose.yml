@@ -6,7 +6,7 @@ services:
     volumes:
       - ~/Storage/Docker/homer/assets/:/www/assets
     ports:
-      - 80:8080
+      - 81:8080
     user: 1000:1000
     environment:
       - INIT_ASSETS=0

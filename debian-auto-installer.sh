@@ -59,7 +59,7 @@ pull_docker_images(){
     echo "updating image: $dir"
       images=$(grep -E '^\s+image:' "$dir/docker-compose.yml" | awk '{print $2}')
       for image in $images; do
-        perform_docker_pull $image 
+        perform_docker_pull $image &
       done
     fi
   done
@@ -73,7 +73,7 @@ run_docker_compose(){
   # Loop through each subdirectory and perform docker-compose up -d
   echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
   for dir in ./*; do
-    if [[ -d "$dir" && ! "$dir" == *steam*  && ! "$dir" == *pihole* ]]; then
+    if [[ -d "$dir" && ! "$dir" == *deactivated*  ]]; then
       (cd "$dir" && sudo docker-compose up -d --remove-orphans && cd ..)
     fi
   done

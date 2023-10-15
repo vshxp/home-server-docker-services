@@ -4,6 +4,6 @@
     - [ ] install
     - [ ] setup
 
-  - [ ] automation to configure homer
-  
-  
+  - [x] automation to configure homer
+  - [x] add homarr backup
+  - [ ] homarr restore

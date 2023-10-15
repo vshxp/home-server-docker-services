@@ -6,12 +6,11 @@ services:
     container_name: tubesync
     restart: unless-stopped
     ports:
-      - 4848:4848
+      - 4848:8080
     volumes:
       - ~/Storage/Tubesync/config:/config
       - ~/Storage/Tubesync:/youtube
     environment:
-      - TZ="America/Sao_Paulo"
       - PUID=1000
       - PGID=1000
       - HTTP_USER=${TA_USERNAME}
@@ -19,7 +18,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256M
+          memory: 512M
     networks:
       - media
 
