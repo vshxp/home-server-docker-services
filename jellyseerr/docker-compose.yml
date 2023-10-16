@@ -4,8 +4,8 @@ services:
     image: fallenbagel/jellyseerr:latest
     container_name: jellyseerr
     environment:
-      - LOG_LEVEL=debug
       - TZ=America/Sao_Paulo
+      - JELLYFIN_TYPE=emby
     ports:
       - 5055:5055
     volumes:
