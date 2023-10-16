@@ -5,8 +5,6 @@ services:
   nextcloud:
     image: lscr.io/linuxserver/nextcloud:latest
     container_name: nextcloud
-    cap_add:
-      - SYS_ADMIN
     environment:
       - PUID=1000
       - PGID=1000
@@ -18,8 +16,7 @@ services:
     depends_on:
       - db_nextcloud
     volumes:
-      - ~/Storage/Docker/nextcloud2/config:/config
-      - ~/Storage/Docker/nextcloud2/user_data:/var/www/html/data
+      - ~/Storage/Docker/nextcloud2/user_data:/var/www/html
     ports:
       - 8443:80
     deploy:
@@ -35,6 +32,7 @@ services:
     image: postgres:15-alpine
     restart: unless-stopped
     hostname: db_nextcloud
+    user: 1000:1000
     volumes:
       - ~/Storage/Docker/nextcloud2/database/data:/var/lib/postgresql/data
     environment:

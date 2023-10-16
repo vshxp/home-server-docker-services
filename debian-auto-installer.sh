@@ -1,9 +1,6 @@
 #!/bin/bash
 
-
-
 export DOCKER_STORAGE_PATH="~/Storage/Docker"
-
 
 check_docker() {
   #Check if a docker is installed, if not install it
@@ -96,6 +93,14 @@ run_auto_setup(){
   echo "All docker images running"
 }
 
+run_auto_clean(){
+  echo "Removing trash......."
+  sudo docker system prune -f
+  sudo rm -rf ~/.local/share/Trash/*
+  rm -rf ~/.local/share/Trash/*
+}
+
+
 check_docker
 check_docker_network "media"
 check_docker_network "services"
@@ -103,5 +108,5 @@ check_docker_network "steam"
 pull_docker_images
 wait
 run_docker_compose
-
+run_auto_clean
 
