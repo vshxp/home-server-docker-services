@@ -1,7 +1,5 @@
 #!/bin/bash
 
-export DOCKER_STORAGE_PATH="~/Storage/Docker"
-
 check_docker() {
   #Check if a docker is installed, if not install it
 
@@ -77,29 +75,27 @@ run_docker_compose(){
 
   # Wait for all background processes to complete
   wait
-  echo "All docker images running"
+  echo "Docker images running"
 }
 
 run_auto_setup(){
   # Loop through each subdirectory and run auto_configure.sh script to auto configure the service 
   for dir in ./*; do
-    if [[ -d "$dir" ]]; then
+    if [[ -d "$dir" && ! "$dir" == *deactivated* ]]; then
       (cd "$dir" && sh auto_configure.sh && cd ..)
     fi
   done
-
-  # Wait for all background processes to complete
   wait
-  echo "All docker images running"
+  echo "All docker images auto configured."
 }
 
 run_auto_clean(){
   echo "Removing trash......."
-  sudo docker system prune -f
+  docker system prune -f
+  docker image prune -a
   sudo rm -rf ~/.local/share/Trash/*
   rm -rf ~/.local/share/Trash/*
 }
-
 
 check_docker
 check_docker_network "media"
