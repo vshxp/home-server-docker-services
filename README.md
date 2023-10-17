@@ -1,5 +1,4 @@
 # Home server docker services
-this is an automationto 
 
 ## How to install
 Just run the install command. it ll install docker and all dependencies to run the services.

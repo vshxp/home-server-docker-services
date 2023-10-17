@@ -1,5 +1,4 @@
 #!/bin/bash
-
 check_docker() {
   #Check if a docker is installed, if not install it
 
@@ -29,7 +28,6 @@ check_docker() {
     echo '[DONE] Docker Install'
   fi
 }
-
 check_docker_network() {
   # Function to check if a Docker network exists, if not create it
 
@@ -43,7 +41,6 @@ check_docker_network() {
     echo "Docker network '$network_name' created."
   fi
 }
-
 pull_docker_images(){
   # get and update all docker images
   # Use 'grep' to find the image lines and then 'awk' to extract the image names
@@ -59,11 +56,9 @@ pull_docker_images(){
     fi
   done
 }
-
 perform_docker_pull() {
   docker pull $1
 }
-
 run_docker_compose(){
   # Loop through each subdirectory and perform docker-compose up -d
   echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
@@ -77,7 +72,6 @@ run_docker_compose(){
   wait
   echo "Docker images running"
 }
-
 run_auto_setup(){
   # Loop through each subdirectory and run auto_configure.sh script to auto configure the service 
   for dir in ./*; do
@@ -88,7 +82,6 @@ run_auto_setup(){
   wait
   echo "All docker images auto configured."
 }
-
 run_auto_clean(){
   echo "Removing trash......."
   docker system prune -f
@@ -96,7 +89,6 @@ run_auto_clean(){
   sudo rm -rf ~/.local/share/Trash/*
   rm -rf ~/.local/share/Trash/*
 }
-
 check_docker
 check_docker_network "media"
 check_docker_network "services"
@@ -105,4 +97,3 @@ pull_docker_images
 wait
 run_docker_compose
 run_auto_clean
-
