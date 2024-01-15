@@ -6,17 +6,25 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-      - "81:80"
+      - "82:80"
     environment:
       TZ: 'America/Sao_Paulo'
       WEBPASSWORD: ${PIHOME_WEBPASSWORD}
       DNSMASQ_LISTENING : 'all'
+      FTLCONF_LOCAL_IPV4: ${FTLCONF_LOCAL_IPV4}
+      DNSMASQ_USER: root 
+      PIHOLE_UID: 0
     volumes:
-      - '~/Storage/Docker/pihole/etc/pihole:/etc/pihole'
-      - '~/Storage/Docker/pihole/etc/dnsmasq.d:/etc/dnsmasq.d'
+      - 'pi-hole:/etc/pihole'
+      - 'pi-hole:/etc/dnsmasq.d'
     restart: unless-stopped
     networks:
       - services
+    cap_add:
+      - NET_ADMIN
+
+volumes:
+  pi-hole:
 
 networks:
   services:

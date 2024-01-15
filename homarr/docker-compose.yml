@@ -6,7 +6,16 @@ services:
     restart: unless-stopped
     volumes:
       - ~/Storage/Docker/homarr/configs:/app/data/configs
+      - ~/Storage/Docker/homarr/data:/data
       - ~/Storage/Docker/homarr/icons:/app/public/icons
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - '80:7575'
+
+    networks:
+      - services
+
+networks:
+  services:
+    name: services
+    external: true

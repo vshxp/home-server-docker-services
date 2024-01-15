@@ -4,12 +4,12 @@ services:
     image: filebrowser/filebrowser:s6
     container_name: filebrowser
     volumes:
-      - ~/Storage/Docker/filebrowser/srv:/srv
-      - ~/Storage/Docker/filebrowser/db/filebrowser.db:/database/filebrowser.db
-      - ~/Storage/Docker/filebrowser/config/settings.json:/config/settings.json
+      - '~/Storage/Docker/filebrowser/srv:/srv'
+      - '~/Storage/Docker/filebrowser/db/filebrowser.db:/database/filebrowser.db'
+      - '~/Storage/Docker/filebrowser/config/settings.json:/config/settings.json'
     environment:
-      - PUID=$(id -u)
-      - PGID=$(id -g)
+      - PUID=1000
+      - PGID=1000
     ports:
       - 8095:80
 
