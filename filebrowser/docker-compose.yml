@@ -1,0 +1,19 @@
+version: '3'
+services:
+  filebrowser:
+    image: filebrowser/filebrowser:s6
+    container_name: filebrowser
+    volumes:
+      - ~/Storage/Docker/filebrowser/srv:/srv
+      - ~/Storage/Docker/filebrowser/db/filebrowser.db:/database/filebrowser.db
+      - ~/Storage/Docker/filebrowser/config/settings.json:/config/settings.json
+    environment:
+      - PUID=$(id -u)
+      - PGID=$(id -g)
+    ports:
+      - 8095:80
+
+networks:
+  media:
+    name: media
+    external: true
