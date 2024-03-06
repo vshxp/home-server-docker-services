@@ -70,7 +70,7 @@ Radarr is a `movie` collection manager for Usenet and BitTorrent clients. It can
 ## Sonarr
 Sonarr is a `tv-show` collection manager for Usenet and BitTorrent clients. (same as Radarr but for tv-shows)
 
-## tube Archivist
+## tubeSync
 Listen youtube playlists and download it contents.
 It's used to download videos from a specific playlist from youtube to your server
 
