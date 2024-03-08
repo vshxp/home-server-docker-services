@@ -57,7 +57,7 @@ Jellyfin is the volunteer-built media solution that puts you in control of your 
 Jellyseerr is a free and open source software application for managing requests for your media library. It integrates with Jellyfin
 
 ## Prowlarr
-Prowlarr is an `indexer` manager/proxy that integrate with  various PVR apps. Prowlarr supports both torrent trackers and Usenet indexers. It integrates seamlessly with Lidarr, Radarr, Readarr, and Sonarr, offering automated management of your indexers with no per-app indexer configuration required.
+Prowlarr is an `indexer` manager/proxy that integrate with various PVR apps. Prowlarr supports both torrent trackers and Usenet indexers. It integrates seamlessly with Lidarr, Radarr, Readarr, and Sonarr, offering automated management of your indexers with no per-app indexer configuration required.
 
 ## qbittorrent
 qBittorrent is a cross-platform free and open-source `BitTorrent client` written in native C++.
