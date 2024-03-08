@@ -6,10 +6,15 @@ services:
       - '3001:3001'
     container_name: uptime-kuma
     image: 'louislam/uptime-kuma:latest'
+    volumes:
+      - ~/Storage/Docker/uptime-kuma/data:/app/data
     deploy:
       resources:
         limits:
           memory: 256M
+    environment:
+      - PUID=1000
+      - PGID=1000
     networks:
       - services
 
