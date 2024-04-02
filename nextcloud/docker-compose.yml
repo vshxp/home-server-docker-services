@@ -42,7 +42,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 4096M
+          memory: 512M
     networks:
       - services
 
