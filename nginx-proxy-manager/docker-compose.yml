@@ -30,4 +30,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MARIADB_AUTO_UPGRADE: '1'
     volumes:
-      - /Storage/.Docker/nginx-proxy-manager/database/mysql:/var/lib/mysql
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
