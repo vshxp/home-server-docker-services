@@ -42,6 +42,5 @@ networks:
     external: true
 
 volumes:
-  nextcloud:
   db:
   
