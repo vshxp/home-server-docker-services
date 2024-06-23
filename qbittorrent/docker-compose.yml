@@ -10,8 +10,8 @@ services:
       - UMASK_SET=022
       - WEBUI_PORT=8080
     volumes:
-      - '~/Storage/Docker/qbittorrent/config:/config'
-      - '~/Storage:/storage/'
+      - '/Storage/.Docker/qbittorrent/config:/config'
+      - '/Storage/Media:/storage/'
     ports:
       - 6881:6881
       - 8080:8080

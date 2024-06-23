@@ -26,7 +26,7 @@ services:
     links:
       - nextcloud-db
     volumes:
-      - ~/Storage/Docker/nextcloud-v2/files/:/var/www/html
+      - /Storage/.Docker/nextcloud-v2/files/:/var/www/html
     environment:
       - MYSQL_PASSWORD=${DB_PASSWORD}
       - MYSQL_DATABASE=${DB_DATABASE}

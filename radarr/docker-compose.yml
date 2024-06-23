@@ -8,8 +8,8 @@ services:
       - PGID=1000
       - TZ=America/Sao_Paulo
     volumes:
-      - ~/Storage/Docker/radarr/config:/config
-      - ~/Storage:/storage
+      - /Storage/.Docker/radarr/config:/config
+      - /Storage/Media:/storage
     ports:
       - 7878:7878
     restart: unless-stopped

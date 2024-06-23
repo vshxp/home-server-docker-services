@@ -8,8 +8,8 @@ services:
       - PGID=1000
       - TZ=America/Sao_Paulo
     volumes:
-      - ~/Storage/Docker/sonarr/config:/config
-      - ~/Storage:/storage
+      - /Storage/.Docker/sonarr/config:/config
+      - /Storage/Media:/storage
     ports:
       - 8989:8989
     restart: unless-stopped
