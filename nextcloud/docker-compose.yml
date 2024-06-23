@@ -1,48 +1,38 @@
 ---
 version: "3.8"
 services:
+  db:
+    image: mariadb
+    restart: always
+    container_name: nextcloud-mysql
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW --innodb-file-per-table=1 --skip-innodb-read-only-compressed
 
-  nextcloud:
-    image: lscr.io/linuxserver/nextcloud:latest
-    container_name: nextcloud
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ="America/Sao_Paulo"
-      - POSTGRES_HOST=db_nextcloud
-      - POSTGRES_DB=${POSTGRES_DATABASE}
-      - POSTGRES_USER=${POSTGRES_USER} 
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-    depends_on:
-      - db_nextcloud
     volumes:
-      - ~/Storage/Docker/nextcloud2/user_data:/var/www/html
-    ports:
-      - 8443:80
-    deploy:
-      resources:
-        limits:
-          memory: 1024M
-    restart: unless-stopped
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USER}
     networks:
       - services
-  
-  db_nextcloud:
-    container_name: nextcloud-db
-    image: postgres:15-alpine
-    restart: unless-stopped
-    hostname: db_nextcloud
-    user: 1000:1000
+
+  app:
+    image: nextcloud
+    container_name: nextcloud-app
+    restart: always
+    ports:
+      - 80
+    links:
+      - db
     volumes:
-      - ~/Storage/Docker/nextcloud2/database/data:/var/lib/postgresql/data
+      - ~/Storage/Docker/nextcloud-v2/files/:/var/www/html
     environment:
-      - POSTGRES_DB=${POSTGRES_DATABASE}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-    deploy:
-      resources:
-        limits:
-          memory: 512M
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_HOST=db
+      - TZ="America/Sao_Paulo"
     networks:
       - services
 
@@ -50,3 +40,8 @@ networks:
   services:
     name: services
     external: true
+
+volumes:
+  nextcloud:
+  db:
+  
