@@ -5,8 +5,8 @@ services:
     container_name: filebrowser
     volumes:
       - '~/Storage/Public:/srv'
-      - ~/Storage/Docker/filebrowser/db:/database
-      - ~/Storage/Docker/filebrowser/config:/config
+      - /Storage/.Docker/filebrowser/db:/database
+      - /Storage/.Docker/filebrowser/config:/config
     environment:
       - PUID=1000
       - PGID=1000

@@ -15,8 +15,8 @@ services:
       DB_MYSQL_NAME: ${MYSQL_DATABASE}
       DISABLE_IPV6: 'true'
     volumes:
-      - ~/Storage/Docker/nginx-proxy-manager/app/data:/data
-      - ~/Storage/Docker/nginx-proxy-manager/app/letsencrypt:/etc/letsencrypt
+      - /Storage/.Docker/nginx-proxy-manager/app/data:/data
+      - /Storage/.Docker/nginx-proxy-manager/app/letsencrypt:/etc/letsencrypt
     depends_on:
       - db
 
@@ -30,4 +30,4 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MARIADB_AUTO_UPGRADE: '1'
     volumes:
-      - ~/Storage/Docker/nginx-proxy-manager/database/mysql:/var/lib/mysql
+      - /Storage/.Docker/nginx-proxy-manager/database/mysql:/var/lib/mysql
