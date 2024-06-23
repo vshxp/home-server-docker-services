@@ -9,6 +9,8 @@ services:
       - '443:443' # Public HTTPS Port
       - '81:81' # Admin Web Port
     environment:
+      PUID: 1000
+      PGID: 1000
       DB_MYSQL_HOST: "db"
       DB_MYSQL_PORT: 3306
       DB_MYSQL_USER: ${MYSQL_USER}
