@@ -1,7 +1,7 @@
 ---
 version: "3.8"
 services:
-  db:
+  nextcloud-db:
     image: mariadb
     restart: always
     container_name: nextcloud-mysql
@@ -17,14 +17,14 @@ services:
     networks:
       - services
 
-  app:
+  nextcloud-app:
     image: nextcloud
     container_name: nextcloud-app
     restart: always
     ports:
-      - 80
+      - 8081:80
     links:
-      - db
+      - nextcloud-db
     volumes:
       - ~/Storage/Docker/nextcloud-v2/files/:/var/www/html
     environment:
