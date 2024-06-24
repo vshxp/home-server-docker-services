@@ -28,8 +28,6 @@ services:
     volumes:
       - /Storage/.Docker/nextcloud-v2/files/:/var/www/html
     environment:
-      - PUID=1000
-      - PGID=1000
       - MYSQL_PASSWORD=${DB_PASSWORD}
       - MYSQL_DATABASE=${DB_DATABASE}
       - MYSQL_USER=${DB_USER}
