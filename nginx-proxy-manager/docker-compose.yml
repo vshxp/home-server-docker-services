@@ -21,7 +21,7 @@ services:
       - /Storage/.Docker/nginx-proxy-manager/app/data:/data
       - /Storage/.Docker/nginx-proxy-manager/app/letsencrypt:/etc/letsencrypt
     depends_on:
-      - db
+      - npm-db
     networks:
       - services
 
