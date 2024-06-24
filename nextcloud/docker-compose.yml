@@ -29,8 +29,7 @@ services:
       - MYSQL_HOST=db
       - TZ="America/Sao_Paulo"
     volumes:
-      - /Storage/.Docker/nextcloud-v2/data/:/var/www/html
-      - /Storage/.Docker/nextcloud-v2/config:/config
+      - nextcloud-v2:/config
     ports:
       - 4343:443
     restart: unless-stopped
@@ -44,4 +43,5 @@ networks:
 
 volumes:
   db:
+  nextcloud-v2:
   

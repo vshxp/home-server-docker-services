@@ -22,6 +22,8 @@ services:
       - /Storage/.Docker/nginx-proxy-manager/app/letsencrypt:/etc/letsencrypt
     depends_on:
       - db
+    networks:
+      - services
 
   npm-db:
     image: 'jc21/mariadb-aria:latest'
@@ -35,6 +37,13 @@ services:
       MARIADB_AUTO_UPGRADE: '1'
     volumes:
       - db_data:/var/lib/mysql
+    networks:
+      - services
+
+networks:
+  services:
+    name: services
+    external: true
 
 volumes:
   db_data:
