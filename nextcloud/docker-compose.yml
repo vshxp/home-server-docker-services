@@ -31,7 +31,7 @@ services:
       - MYSQL_PASSWORD=${DB_PASSWORD}
       - MYSQL_DATABASE=${DB_DATABASE}
       - MYSQL_USER=${DB_USER}
-      - MYSQL_HOST=db
+      - MYSQL_HOST=${DB_HOST}
       - TZ="America/Sao_Paulo"
     networks:
       - services
