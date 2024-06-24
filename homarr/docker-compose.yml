@@ -4,6 +4,9 @@ services:
     container_name: homarr
     image: ghcr.io/ajnart/homarr:latest
     restart: unless-stopped
+    environment:
+      - uid=1000
+      - gid=1000
     volumes:
       - /Storage/.Docker/homarr/configs:/app/data/configs
       - /Storage/.Docker/homarr/data:/data
