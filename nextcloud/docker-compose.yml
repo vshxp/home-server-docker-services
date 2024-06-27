@@ -1,25 +1,9 @@
 ---
 version: "3.8"
 services:
-  nextcloud-db:
-    image: mariadb
-    restart: always
-    container_name: nextcloud-mysql
-    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW --innodb-file-per-table=1 --skip-innodb-read-only-compressed
-    
-    volumes:
-      - nextcloud_db_data:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
-      - MYSQL_PASSWORD=${DB_PASSWORD}
-      - MYSQL_DATABASE=${DB_DATABASE}
-      - MYSQL_USER=${DB_USER}
-    networks:
-      - services
-
-  nextcloud-app:
-    image: nextcloud
-    container_name: nextcloud-app
+  nextcloud:
+    image: nextcloud/all-in-one:latest
+    container_name: nextcloud-aio
     restart: always
     ports:
       - 8081:80
@@ -27,11 +11,6 @@ services:
       - nextcloud-db
     volumes:
       - /Storage/.Docker/nextcloud/data:/var/www/html
-    environment:
-      - MYSQL_PASSWORD=${DB_PASSWORD}
-      - MYSQL_DATABASE=${DB_DATABASE}
-      - MYSQL_USER=${DB_USER}
-      - MYSQL_HOST=${DB_HOST}
       - TZ="America/Sao_Paulo"
     networks:
       - services
@@ -40,6 +19,3 @@ networks:
   services:
     name: services
     external: true
-
-volumes:
-  nextcloud_db_data:
