@@ -9,6 +9,7 @@ services:
       - 8081:80
     volumes:
       - /Storage/.Docker/nextcloud/data:/var/www/html
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
       - services
 
