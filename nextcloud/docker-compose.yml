@@ -6,7 +6,7 @@ services:
     restart: always
     container_name: nextcloud-mysql
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW --innodb-file-per-table=1 --skip-innodb-read-only-compressed
-
+    
     volumes:
       - nextcloud_db_data:/var/lib/mysql
     environment:

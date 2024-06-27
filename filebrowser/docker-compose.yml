@@ -1,10 +1,10 @@
 version: '3'
 services:
   filebrowser:
-    image: filebrowser/filebrowser:s6
+    image: filebrowser/filebrowser
     container_name: filebrowser
     volumes:
-      - '~/Storage/Public:/srv'
+      - '/Storage/Public:/srv'
       - /Storage/.Docker/filebrowser/db:/database
       - /Storage/.Docker/filebrowser/config:/config
     environment:
@@ -14,6 +14,6 @@ services:
       - 8095:80
 
 networks:
-  media:
-    name: media
+  services:
+    name: services
     external: true
