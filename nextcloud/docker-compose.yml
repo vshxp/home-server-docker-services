@@ -21,6 +21,8 @@ services:
     image: nextcloud
     container_name: nextcloud-app
     restart: always
+    ports:
+      - 8081:80
     links:
       - nextcloud-db
     volumes:
@@ -41,5 +43,3 @@ networks:
 
 volumes:
   nextcloud_db_data:
-  nextcloud_app_data:
-
