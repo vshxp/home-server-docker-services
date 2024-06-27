@@ -7,8 +7,6 @@ services:
     restart: always
     ports:
       - 8081:80
-    links:
-      - nextcloud-db
     volumes:
       - /Storage/.Docker/nextcloud/data:/var/www/html
       - TZ="America/Sao_Paulo"
