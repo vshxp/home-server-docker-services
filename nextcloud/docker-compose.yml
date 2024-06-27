@@ -9,7 +9,6 @@ services:
       - 8081:80
     volumes:
       - /Storage/.Docker/nextcloud/data:/var/www/html
-      - TZ="America/Sao_Paulo"
     networks:
       - services
 
