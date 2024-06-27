@@ -10,8 +10,6 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-    # ports:
-    #   - 8095:80
     networks:
       - services
 
