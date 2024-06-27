@@ -7,8 +7,11 @@ services:
     restart: always
     ports:
       - 8081:80
+    environment:
+      - NEXTCLOUD_DATADIR="/mnt/nextcloud_data"
     volumes:
-      - /Storage/.Docker/nextcloud/data:/var/www/html
+      - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
+      - /Storage/.Docker/nextcloud/data:/mnt/nextcloud/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
       - services
@@ -17,3 +20,6 @@ networks:
   services:
     name: services
     external: true
+
+volumes:
+  nextcloud_aio_mastercontainer:
