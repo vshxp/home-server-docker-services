@@ -14,9 +14,9 @@ services:
         limits:
           memory: 1024M
     networks:
-      - media
+      - services
 
 networks:
-  media:
-    name: media
+  services:
+    name: services
     external: true
