@@ -18,3 +18,14 @@ services:
       - 51413:51413
       - 51413:51413/udp
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    networks:
+      - services
+
+networks:
+  services:
+    name: services
+    external: true

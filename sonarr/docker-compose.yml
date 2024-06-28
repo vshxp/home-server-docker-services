@@ -16,11 +16,11 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256M
+          memory: 2048M
     networks:
-      - media
+      - services
 
 networks:
-  media:
-    name: media
+  services:
+    name: services
     external: true
