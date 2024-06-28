@@ -11,8 +11,7 @@ services:
       - PGID=1000
       - TZ=America/Sao_Paulo
       - DB_CONNECTION=pgsql
-      - APP_KEY=
-      - DB_CONNECTION=pgsql
+      - APP_KEY=${APP_KEY}
       - DB_HOST=db
       - DB_PORT=5432
       - DB_DATABASE=${POSTGRES_DATABASE}
@@ -44,7 +43,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256M
+          memory: 512M
     networks:
       - services
 
