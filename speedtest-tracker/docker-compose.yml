@@ -1,8 +1,8 @@
 ---
 services:
-  speedtest-tracker:
+  app-speedtest-tracker:
     image: lscr.io/linuxserver/speedtest-tracker:latest
-    container_name: speedtest-tracker
+    container_name: speedtest-tracker-app
     environment:
       - PUID=1000
       - PGID=1000
@@ -14,7 +14,7 @@ services:
       - DB_USERNAME=${POSTGRES_USER}
       - DB_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
-      - ~/Storage/Docker/speedtest-tracker/config:/config
+      - speedtest-tracker:/config
     ports:
       - 8765:80
     restart: unless-stopped
@@ -29,10 +29,10 @@ services:
     container_name: speedtest-tracker-db
     image: postgres:16-alpine
     restart: unless-stopped
-    hostname: db-speedtest-tracker
+    hostname: speedtest-tracker-db
     user: 1000:1000
     volumes:
-      - ~/Storage/Docker/speedtest-tracker/database/postgresql/data:/var/lib/postgresql/data
+      - speedtest-tracker-db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=${POSTGRES_DATABASE}
       - POSTGRES_USER=${POSTGRES_USER}

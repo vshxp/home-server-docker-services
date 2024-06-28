@@ -7,7 +7,7 @@ services:
     container_name: uptime-kuma
     image: 'louislam/uptime-kuma:latest'
     volumes:
-      - ~/Storage/Docker/uptime-kuma/data:/app/data
+      - /Storage/.Docker/uptime-kuma/data:/app/data
     deploy:
       resources:
         limits:

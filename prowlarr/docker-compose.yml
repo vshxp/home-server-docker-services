@@ -12,14 +12,14 @@ services:
     ports:
       - 9696:9696
     restart: unless-stopped
-    networks:
-      - media
     deploy:
       resources:
         limits:
           memory: 256M
+    networks:
+      - services
 
 networks:
-  media:
-    name: media
+  services:
+    name: services
     external: true
