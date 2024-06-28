@@ -1,0 +1,20 @@
+---
+services:
+  transmission:
+    image: lscr.io/linuxserver/transmission:latest
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Sao_Paulo
+      - USER={$USER}
+      - PASS=${PASS}
+      - WHITELIST=${WHITELIS}
+    volumes:
+      - /Storage/.Docker/transmission/data:/config
+      - /Storage/Media:/downloads
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
