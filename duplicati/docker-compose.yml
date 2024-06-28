@@ -1,0 +1,23 @@
+---
+services:
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    container_name: duplicati
+    ports:
+      - 8200:8200
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Sao_Paulo
+    volumes:
+      - /Storage/.Docker/duplicati/config:/config
+      - /Storage/testBackup:/backups
+      - /Storage:/source
+    restart: unless-stopped
+    networks:
+      - services
+
+networks:
+  services:
+    name: services
+    external: true

@@ -1,18 +1,57 @@
 ---
-version: "3.8"
+version: '3'
+
 services:
-  nextcloud-aio-mastercontainer:
-    image: nextcloud/all-in-one:latest
-    container_name: nextcloud-aio-mastercontainer
+  nextcloud_db:
+    image: postgres:alpine
+    container_name: nextcloud-db
+    restart: always
+    volumes:
+      - db:/var/lib/postgresql/data:Z
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+    networks:
+      - services
+
+  nextcloud_redis:
+    image: redis:alpine
+    container_name: nextcloud-redis
+    restart: always
+    networks:
+      - services
+
+  nextcloud_app:
+    image: nextcloud:apache
+    container_name: nextcloud-app
     restart: always
     ports:
-      - 8081:80
-    environment:
-      - NEXTCLOUD_DATADIR="/mnt/nextcloud_data"
+      - 8080:80
     volumes:
-      - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
-      - /Storage/.Docker/nextcloud/data:/mnt/nextcloud/data
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /Storage/.Docker/nextcloud/data:/var/www/html:z
+    environment:
+      - POSTGRES_HOST=nextcloud_db
+      - REDIS_HOST=nextcloud_redis
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+    depends_on:
+      - db
+      - redis
+    networks:
+      - services
+
+  nextcloud_cron:
+    image: nextcloud:apache
+    container_name: nextcloud-cron
+    restart: always
+    volumes:
+      - /Storage/.Docker/nextcloud/data:/var/www/html:z
+    entrypoint: /cron.sh
+    depends_on:
+      - db
+      - redis
     networks:
       - services
 
@@ -22,4 +61,4 @@ networks:
     external: true
 
 volumes:
-  nextcloud_aio_mastercontainer:
+  db:
