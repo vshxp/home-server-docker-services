@@ -29,7 +29,6 @@ services:
     container_name: speedtest-tracker-db
     image: postgres:16-alpine
     restart: unless-stopped
-    hostname: speedtest-tracker-db
     user: 1000:1000
     volumes:
       - speedtest_tracker_db:/var/lib/postgresql/data
