@@ -5,7 +5,7 @@ services:
     container_name: jellyseerr
     environment:
       - TZ=America/Sao_Paulo
-      - JELLYFIN_TYPE=emby
+      # - JELLYFIN_TYPE=emby
     ports:
       - 5055:5055
     volumes:
@@ -14,11 +14,11 @@ services:
     deploy:
       resources:
         limits:
-          memory: 256M
+          memory: 512M
     networks:
-      - media
+      - services
 
 networks:
-  media:
-    name: media
+  services:
+    name: services
     external: true
