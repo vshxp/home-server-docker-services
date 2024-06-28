@@ -7,7 +7,7 @@ services:
     container_name: nextcloud-db
     restart: always
     volumes:
-      - db:/var/lib/postgresql/data:Z
+      - nextcloud_db:/var/lib/postgresql/data:Z
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
@@ -50,8 +50,8 @@ services:
       - /Storage/.Docker/nextcloud/data:/var/www/html:z
     entrypoint: /cron.sh
     depends_on:
-      - db
-      - redis
+      - nextcloud_db
+      - nextcloud_redis
     networks:
       - services
 
@@ -61,4 +61,4 @@ networks:
     external: true
 
 volumes:
-  db:
+  nextcloud_db:
