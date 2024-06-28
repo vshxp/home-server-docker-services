@@ -37,8 +37,8 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
     depends_on:
-      - db
-      - redis
+      - nextcloud_db
+      - nextcloud_redis
     networks:
       - services
 
