@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  embyserver:
+    image: lscr.io/linuxserver/emby:latest
+    container_name: emby-server
+    volumes:
+      - '~/Storage/Docker/emby/data:/var/lib/emby'
+      - '~/Storage/Docker/emby/config:/config'
+      - '~/Storage:/data'
+      - '~/Storage/Courses:/data/Courses'
+    ports:
+      - 8096:8096
+    environment:
+      - PUID=1000
+      - PGID=1000
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    networks:
+      - media
+
+networks:
+  media:
+    name: media
+    external: true

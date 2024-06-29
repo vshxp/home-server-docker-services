@@ -1,0 +1,28 @@
+---
+version: "3.8"
+services:
+  tubesync:
+    image: ghcr.io/meeb/tubesync:latest
+    container_name: tubesync
+    restart: unless-stopped
+    ports:
+      - 4848:4848
+    volumes:
+      - ~/Storage/Docker/Tubesync/config:/config
+      - ~/Storage/Tubesync:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - HTTP_USER=${TA_USERNAME}
+      - HTTP_PASS=${TA_PASSWORD}
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    networks:
+      - media
+
+networks:
+  media:
+    name: media
+    external: true
