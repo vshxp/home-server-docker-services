@@ -3,7 +3,6 @@ services:
   radarr:
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
-    user: shx
     environment:
       - PUID=1000
       - PGID=1000
