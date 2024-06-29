@@ -7,9 +7,9 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=America/Sao_Paulo
-      - USER={$USER}
+      - USER=${USER}
       - PASS=${PASS}
-      - WHITELIST=${WHITELIS}
+      - WHITELIST=${WHITELIST}
     volumes:
       - /Storage/.Docker/transmission/data:/config
       - /Storage/Media:/downloads
