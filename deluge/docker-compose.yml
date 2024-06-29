@@ -16,3 +16,10 @@ services:
       - 6881:6881/udp
       - 58846:58846 #optional
     restart: unless-stopped
+    networks:
+      - services
+
+networks:
+  services:
+    name: services
+    external: true
