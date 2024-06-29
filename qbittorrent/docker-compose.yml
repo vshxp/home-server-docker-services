@@ -12,18 +12,19 @@ services:
     volumes:
       - '/Storage/.Docker/qbittorrent/config:/config'
       - '/Storage/Media:/storage/'
-    ports:
-      - 6881:6881
-      - 8080:8080
+    # ports:
+    #   - 6881:6881
+    #   - 8080:8080
     restart: unless-stopped
     deploy:
       resources:
         limits:
           memory: 2048M
     networks:
-      - media
+      - services
 
 networks:
-  media:
-    name: media
+  services:
+    name: services
     external: true
+
