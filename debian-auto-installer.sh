@@ -47,7 +47,7 @@ pull_docker_images(){
   # then for each image perform docker pull
 
   for dir in ./*; do
-    if [[ -d "$dir"  && ! "$dir" == *deactivated* ]]; then
+    if [[ -d "$dir"  && ! "$dir" == *_archive* ]]; then
     echo "updating image: $dir"
       images=$(grep -E '^\s+image:' "$dir/docker-compose.yml" | awk '{print $2}')
       for image in $images; do
@@ -63,7 +63,7 @@ run_docker_compose(){
   # Loop through each subdirectory and perform docker-compose up -d
   echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
   for dir in ./*; do
-    if [[ -d "$dir" && ! "$dir" == *deactivated*  ]]; then
+    if [[ -d "$dir" && ! "$dir" == *_archive*  ]]; then
       (cd "$dir" && sudo docker-compose up -d --remove-orphans && cd ..)
     fi
   done
@@ -75,7 +75,7 @@ run_docker_compose(){
 run_auto_setup(){
   # Loop through each subdirectory and run auto_configure.sh script to auto configure the service 
   for dir in ./*; do
-    if [[ -d "$dir" && ! "$dir" == *deactivated* ]]; then
+    if [[ -d "$dir" && ! "$dir" == *_archive* ]]; then
       (cd "$dir" && sh auto_configure.sh && cd ..)
     fi
   done
@@ -90,9 +90,7 @@ run_auto_clean(){
   rm -rf ~/.local/share/Trash/*
 }
 check_docker
-check_docker_network "media"
 check_docker_network "services"
-check_docker_network "steam"
 pull_docker_images
 wait
 run_docker_compose

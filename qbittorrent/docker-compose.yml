@@ -14,7 +14,7 @@ services:
       - '/Storage/Media:/storage/'
     ports:
       - 6881:6881
-      - 8080:8080
+      - 8082:8080
     restart: unless-stopped
     deploy:
       resources:
