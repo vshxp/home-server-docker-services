@@ -9,9 +9,9 @@ services:
     volumes:
       - /Storage/.Docker/freetube/config:/config
       - /Storage/Media/youtube:/downloads
-    ports:
-      - 3000:3000
-      - 3001:3001
+#    ports:
+#      - 3000:3000
+#      - 3001:3001
     restart: unless-stopped
     deploy:
       resources:
