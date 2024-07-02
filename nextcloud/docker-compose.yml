@@ -1,6 +1,4 @@
 ---
-version: '3'
-
 services:
   nextcloud_db:
     image: postgres:alpine

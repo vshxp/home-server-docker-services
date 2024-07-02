@@ -1,3 +1,4 @@
+---
 services:
   freetube:
     image: lscr.io/linuxserver/freetube:latest
