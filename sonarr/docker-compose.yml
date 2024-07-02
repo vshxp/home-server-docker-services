@@ -10,7 +10,7 @@ services:
     volumes:
       - /Storage/.Docker/sonarr/config:/config
       - /Storage/Media/tv-shows:/tv-shows
-      - /Storage/Media/downloads/torrent/completed:/data
+      - /Storage/Media/downloads/torrent:/data/completed
     ports:
       - 8989:8989
     restart: unless-stopped
