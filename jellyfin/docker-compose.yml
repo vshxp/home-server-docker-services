@@ -10,8 +10,7 @@ services:
       - TZ=America/Sao_Paulo
     volumes:
       - /Storage/.Docker/jellyfin/config:/config
-      - /Storage/Media/Movies:/storage/movies/
-      - /Storage/Media/Tv-Shows:/storage/tv-shows/
+      - /Storage/Media/downloads/torrent/complete:/storage
     ports:
       - 8097:8096
       - 8920:8920
