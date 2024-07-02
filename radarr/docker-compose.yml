@@ -10,7 +10,7 @@ services:
     volumes:
       - /Storage/.Docker/radarr/config:/config
       - /Storage/Media/movies:/movies
-      - /Storage/Media/downloads/torrent:/data/completed
+      - /Storage/Media/downloads/torrent:/data/completed/radarr
     ports:
       - 7878:7878
     restart: unless-stopped
