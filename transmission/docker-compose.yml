@@ -12,7 +12,9 @@ services:
       - WHITELIST=${WHITELIST}
     volumes:
       - /Storage/.Docker/transmission/data:/config
-      - /Storage/Media/downloads/torrent:/data/downloads
+      - /Storage/Media/downloads:/data
+      - /media/downloads:/data
+      - /etc/localtime:/etc/localtime:ro
     ports:
       - 9091:9091
       - 51413:51413

@@ -9,7 +9,8 @@ services:
       - TZ=America/Sao_Paulo
     volumes:
       - /Storage/.Docker/sonarr/config:/config
-      - /Storage/Media:/data
+      - /Storage/Media/tv-shows:/tv-shows
+      - /Storage/Media/downloads/completed:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
