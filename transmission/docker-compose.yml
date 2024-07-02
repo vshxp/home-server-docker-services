@@ -12,7 +12,7 @@ services:
       - WHITELIST=${WHITELIST}
     volumes:
       - /Storage/.Docker/transmission/data:/config
-      - /Storage/Media:/downloads
+      - /Storage/Media/downloads/torrent:/data/torrent
     ports:
       - 9091:9091
       - 51413:51413

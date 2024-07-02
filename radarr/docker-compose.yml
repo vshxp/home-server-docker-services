@@ -9,7 +9,7 @@ services:
       - TZ=America/Sao_Paulo
     volumes:
       - /Storage/.Docker/radarr/config:/config
-      - /Storage/Media:/storage
+      - /Storage/Media:/data
     ports:
       - 7878:7878
     restart: unless-stopped
