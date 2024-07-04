@@ -10,7 +10,7 @@ services:
       - 5055:5055
     volumes:
       - /Storage/.Docker/jellyseerr/config:/app/config
-      - /Storage/Media:/data
+      - /Storage/Media:/media
 
     restart: unless-stopped
     deploy:

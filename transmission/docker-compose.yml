@@ -9,10 +9,9 @@ services:
       - TZ=America/Sao_Paulo
       - USER=${USER}
       - PASS=${PASS}
-      - WHITELIST=${WHITELIST}
     volumes:
       - /Storage/.Docker/transmission/data:/config
-      - /Storage/Media:/downloads/torrent/
+      - /Storage/Media:/media
       - /etc/localtime:/etc/localtime:ro
     ports:
       - 9091:9091
