@@ -9,8 +9,9 @@ services:
       - TZ=America/Sao_Paulo
     volumes:
       - /Storage/.Docker/bazarr/config:/config
-      - /Storage/Media/Tv-Shows:/storage/tv-shows
-      - /Storage/Media/Movies:/storage/movies
+      - /Storage/Media/tv-shows:/Storage/Media/tv-shows
+      - /Storage/Media/movies:/Storage/Media/movies
+
     ports:
       - 6767:6767
     restart: unless-stopped

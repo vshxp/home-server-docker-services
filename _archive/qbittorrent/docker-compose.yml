@@ -11,7 +11,7 @@ services:
       - WEBUI_PORT=8080
     volumes:
       - '/Storage/.Docker/qbittorrent/config:/config'
-      - '/Storage/Media:/storage/'
+      - /Storage/Media/downloads/torrent:/Storage/Media/downloads/torrent
     ports:
       - 6881:6881
       - 8082:8080

@@ -9,7 +9,6 @@ services:
       - TZ=America/Sao_Paulo
     volumes:
       - /Storage/.Docker/sonarr/config:/config
-      - /Storage/Media/tv-shows:/tv-shows
       - /Storage/Media/:/Storage/Media
     ports:
       - 8989:8989

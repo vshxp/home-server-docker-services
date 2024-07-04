@@ -19,7 +19,9 @@ services:
           memory: 512M
     networks:
       - services
-
+    labels:
+      - io.portainer.accesscontrol.public
+      
 networks:
   services:
     name: services

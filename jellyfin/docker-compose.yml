@@ -9,7 +9,7 @@ services:
       - TZ=America/Sao_Paulo
     volumes:
       - /Storage/.Docker/jellyfin/config:/config
-      - /Storage/Media:/data
+      - /Storage/Media:/Media
       
     ports:
       - 8097:8096
