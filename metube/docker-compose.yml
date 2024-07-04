@@ -7,7 +7,7 @@ services:
       - UID=1000
       - GID=1000
       - DEFAULT_THEME=dark
-      - AUDIO_DOWNLOAD_DIR=/downloads/audio
+      - /Storage/Media/youtube=/downloads/audio
       - URL_PREFIX='http://yt.matfor.local'
     # ports:
     #   - "8081:8081"
