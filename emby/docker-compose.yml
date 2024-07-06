@@ -4,10 +4,9 @@ services:
     image: lscr.io/linuxserver/emby:latest
     container_name: emby-server
     volumes:
-      - '~/Storage/Docker/emby/data:/var/lib/emby'
-      - '~/Storage/Docker/emby/config:/config'
-      - '~/Storage:/data'
-      - '~/Storage/Courses:/data/Courses'
+      - '/Storage/.Docker/emby/data:/var/lib/emby'
+      - '/Storage/.Docker/emby/config:/config'
+      - '/Storage/Media:/Storage/Media'
     ports:
       - 8096:8096
     environment:
@@ -17,11 +16,11 @@ services:
     deploy:
       resources:
         limits:
-          memory: 2048M
+          memory: 4096M
     networks:
-      - media
+      - services
 
 networks:
-  media:
-    name: media
+  services:
+    name: services
     external: true

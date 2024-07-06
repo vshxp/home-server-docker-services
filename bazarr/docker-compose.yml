@@ -16,9 +16,9 @@ services:
       - 6767:6767
     restart: unless-stopped
     networks:
-      - media
+      - services
 
 networks:
-  media:
-    name: media
+  services:
+    name: services
     external: true
