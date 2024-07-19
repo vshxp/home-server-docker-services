@@ -9,6 +9,8 @@ services:
     container_name: compress-and-encrypt
     environment:
       - COMPRESS_PASSWORD=${COMPRESS_PASSWORD}   # Optional
+    labels:
+      - io.portainer.accesscontrol.public
     volumes:
       - /Storage/.Docker/nextcloud/data/data/cristiane/files:/input_dir/cristiane
       - /Storage/.Docker/nextcloud/data/data/admin/files:/input_dir/admin
