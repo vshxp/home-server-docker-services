@@ -2,6 +2,7 @@
 services:
   filebrowser:
     image: filebrowser/filebrowser
+    user: ${USER}
     container_name: filebrowser
     volumes:
       - '/Storage/Public:/srv'
@@ -10,6 +11,8 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
+    labels:
+      - io.portainer.accesscontrol.public
     networks:
       - services
 
