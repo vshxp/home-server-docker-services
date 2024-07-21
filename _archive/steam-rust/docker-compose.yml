@@ -13,5 +13,5 @@ services:
      - RUST_RCON_PASSWORD=${RUST_RCON_PASSWORD}
      - RUST_OXIDE_ENABLED=${RUST_OXIDE_ENABLED}
     volumes:
-     - '~/.docker-storage/game-server/rust:/steamcmd/rust'
+     - '/Storage/Games/server/rust:/steamcmd/rust'
     image: didstopia/rust-server

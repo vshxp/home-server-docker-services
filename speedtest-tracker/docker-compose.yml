@@ -9,6 +9,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=America/Sao_Paulo
+      - APP_TIMEZONE=${APP_TIMEZONE}
       - DB_CONNECTION=pgsql
       - APP_KEY=${APP_KEY}
       - DB_HOST=db
@@ -16,10 +17,13 @@ services:
       - DB_DATABASE=${POSTGRES_DATABASE}
       - DB_USERNAME=${POSTGRES_USER}
       - DB_PASSWORD=${POSTGRES_PASSWORD}
+      SPEEDTEST_SCHEDULE=${SPEEDTEST_SCHEDULE}
     volumes:
       - /Storage/.Docker/speedtest/config:/config
     image: lscr.io/linuxserver/speedtest-tracker:latest
     restart: unless-stopped
+    labels:
+      - io.portainer.accesscontrol.public
     depends_on:
       - db
     deploy:
@@ -32,6 +36,8 @@ services:
   db:
     image: postgres:16-alpine
     container_name: speedtest-tracker-db
+    labels:
+      - io.portainer.accesscontrol.public
     restart: always
     environment:
       - POSTGRES_DB=${POSTGRES_DATABASE}
