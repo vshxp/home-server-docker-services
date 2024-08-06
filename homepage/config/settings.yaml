@@ -1,0 +1,18 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/settings
+
+title: Zeus
+
+background: 
+  image: https://images.unsplash.com/photo-1485809069980-bdd865d520ae?q=80&w=2400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  blur: sm
+  brightness: 50
+
+theme: dark
+# color: slate
+
+providers:
+  openweathermap: openweathermapapikey
+  weatherapi: weatherapiapikey
+

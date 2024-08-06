@@ -17,7 +17,7 @@ services:
       - DB_DATABASE=${POSTGRES_DATABASE}
       - DB_USERNAME=${POSTGRES_USER}
       - DB_PASSWORD=${POSTGRES_PASSWORD}
-      SPEEDTEST_SCHEDULE=${SPEEDTEST_SCHEDULE}
+      - SPEEDTEST_SCHEDULE=${SPEEDTEST_SCHEDULE}
     volumes:
       - /Storage/.Docker/speedtest/config:/config
     image: lscr.io/linuxserver/speedtest-tracker:latest

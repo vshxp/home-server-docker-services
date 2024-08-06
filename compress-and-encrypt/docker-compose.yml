@@ -15,4 +15,5 @@ services:
     volumes:
       - /Storage/.Docker/nextcloud/data/data/cristiane/files:/input_dir/cristiane
       - /Storage/.Docker/nextcloud/data/data/admin/files:/input_dir/admin
-      - /Storage/Backups/cloud:/output_dir
+      - /Storage/Backups/Companies:/input_dir/companies
+      - /Storage/Backups/Cloud:/output_dir

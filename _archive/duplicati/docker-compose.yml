@@ -11,7 +11,7 @@ services:
       - TZ=America/Sao_Paulo
     volumes:
       - /Storage/.Docker/duplicati/config:/config
-      - /Storage/testBackup:/backups
+      - /Storage/Backups/Cloud:/backups
       - /Storage:/source
     restart: unless-stopped
     networks:
