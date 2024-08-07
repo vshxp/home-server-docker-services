@@ -3,6 +3,8 @@ services:
   cloudflared: 
     image: cloudflare/cloudflared:latest
     container_name: cloudflare-tunnel 
+    labels:
+      - io.portainer.accesscontrol.public
     restart: unless-stopped 
     command: tunnel --no-autoupdate run  
     environment: 

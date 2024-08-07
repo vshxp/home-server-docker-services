@@ -11,7 +11,8 @@ services:
       - /Storage/.Docker/bazarr/config:/config
       - /Storage/Media/tv-shows:/Storage/Media/tv-shows
       - /Storage/Media/movies:/Storage/Media/movies
-
+    labels:
+      - io.portainer.accesscontrol.public
     ports:
       - 6767:6767
     restart: unless-stopped

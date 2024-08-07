@@ -12,6 +12,8 @@ services:
       - /Storage/.Docker/homepage/config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
+    labels:
+      - io.portainer.accesscontrol.public
     deploy:
       resources:
         limits:

@@ -12,6 +12,8 @@ services:
       - /Storage/Media/:/Storage/Media
     ports:
       - 8989:8989
+    labels:
+      - io.portainer.accesscontrol.public
     restart: unless-stopped
     deploy:
       resources:

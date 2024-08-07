@@ -12,6 +12,8 @@ services:
       resources:
         limits:
           memory: 1024M
+    labels:
+      - io.portainer.accesscontrol.public
     networks:
       - services
 

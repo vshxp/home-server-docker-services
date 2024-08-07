@@ -11,6 +11,8 @@ services:
       - /Storage/.Docker/prowlarr/config:/config
     ports:
       - 9696:9696
+    labels:
+      - io.portainer.accesscontrol.public
     restart: unless-stopped
     deploy:
       resources:

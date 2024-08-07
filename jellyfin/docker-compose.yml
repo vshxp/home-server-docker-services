@@ -10,7 +10,8 @@ services:
     volumes:
       - /Storage/.Docker/jellyfin/config:/config
       - /Storage/Media:/Media
-      
+    labels:
+      - io.portainer.accesscontrol.public
     ports:
       - 8097:8096
       - 8920:8920

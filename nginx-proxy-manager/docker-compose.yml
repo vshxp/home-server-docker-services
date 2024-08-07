@@ -20,6 +20,8 @@ services:
     volumes:
       - /Storage/.Docker/nginx-proxy-manager/app/data:/data
       - /Storage/.Docker/nginx-proxy-manager/app/letsencrypt:/etc/letsencrypt
+    labels:
+      - io.portainer.accesscontrol.public
     depends_on:
       - npm-db
     networks:
@@ -35,6 +37,8 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MARIADB_AUTO_UPGRADE: '1'
+    labels:
+      - io.portainer.accesscontrol.public
     volumes:
       - db_data:/var/lib/mysql
     networks:
