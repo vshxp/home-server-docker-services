@@ -8,12 +8,12 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=America/Sao_Paulo
+      - TZ=${APP_TIMEZONE}
       - APP_TIMEZONE=${APP_TIMEZONE}
       - DB_CONNECTION=pgsql
       - APP_KEY=${APP_KEY}
-      - DB_HOST=db
-      - DB_PORT=5432
+      - DB_HOST=speedtest_db
+      - DB_PORT=${DB_PORT}
       - DB_DATABASE=${POSTGRES_DATABASE}
       - DB_USERNAME=${POSTGRES_USER}
       - DB_PASSWORD=${POSTGRES_PASSWORD}
@@ -25,7 +25,7 @@ services:
     labels:
       - io.portainer.accesscontrol.public
     depends_on:
-      - db
+      - speedtest_db
     deploy:
       resources:
         limits:
@@ -33,7 +33,7 @@ services:
     networks:
       - services
     
-  db:
+  speedtest_db:
     image: postgres:16-alpine
     container_name: speedtest-tracker-db
     labels:
@@ -44,7 +44,7 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
-        - speedtest_tracker_db:/var/lib/postgresql/data
+        - db:/var/lib/postgresql/data
     deploy:
       resources:
         limits:
@@ -53,7 +53,7 @@ services:
       - services
 
 volumes:
-  speedtest_tracker_db:
+  db:
 
 networks:
   services:
