@@ -3,7 +3,7 @@ services:
   compress:
     build:
       context: .
-      dockerfile: Dockerfile.cron
+      dockerfile: Dockerfile
     image: compress_encrypt
     user: root
     container_name: compress-and-encrypt
