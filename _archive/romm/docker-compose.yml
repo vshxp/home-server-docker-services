@@ -1,0 +1,53 @@
+---
+services:
+  romm:
+    image: rommapp/romm:latest
+    container_name: romm-app
+    restart: unless-stopped
+    environment:
+      - DB_HOST=romm-db
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWD=${DB_PASSWD}
+      - ROMM_AUTH_SECRET_KEY=${ROMM_AUTH_SECRET_KEY}
+      - IGDB_CLIENT_ID=${IGDB_CLIENT_ID}
+      - IGDB_CLIENT_SECRET=${IGDB_CLIENT_SECRET} 
+      - MOBYGAMES_API_KEY=${MOBYGAMES_API_KEY}
+      - STEAMGRIDDB_API_KEY=${STEAMGRIDDB_API_KEY}
+    labels:
+      - io.portainer.accesscontrol.public
+    volumes:
+      - romm_redis_data:/redis-data
+      - /Storage/.Docker/romm/resources:/romm/resources
+      - /Storage/.Docker/romm/assets:/romm/assets
+      - /Storage/.Docker/romm/config:/romm/config
+      - /Storage/Games/rom:/romm/library
+    depends_on:
+      - romm-db
+    networks:
+      - services
+    # ports:
+    #   - 80:8080
+
+  romm-db:
+    image: mariadb:latest
+    container_name: romm-db
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - services
+
+networks:
+  services:
+    name: services
+    external: true
+
+volumes:
+  mysql_data:
+  romm_redis_data:

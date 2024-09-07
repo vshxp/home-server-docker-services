@@ -164,11 +164,10 @@
         href: "{{HOMEPAGE_VAR_AP02_URL }}"
         description: Office access point
 
-        
     - Uptime Kuma:
         icon: uptime-kuma.svg
         href: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL }}"
-        description: internal
+        description: Internal monitoring
         widget:
             type: uptimekuma
             url: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL }}"
@@ -177,8 +176,9 @@
     - Speed Test:
         icon: speedtest-tracker.png
         href: "{{HOMEPAGE_VAR_SPEEDTEST_URL }}"
+        description: Internet speed monitor
         widget:
-          type: speedtest
-          url: "{{HOMEPAGE_VAR_SPEEDTEST_URL }}"
-          bitratePrecision: 3
+            type: speedtest
+            url: "{{HOMEPAGE_VAR_SPEEDTEST_URL }}"
+            bitratePrecision: 2
 
