@@ -1,0 +1,66 @@
+---
+services:
+  database:
+    image: mariadb:10.5
+    container_name: pterodactyl-db
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - "/Storage/.Docker/pterodactyl/database:/var/lib/mysql"
+    environment:
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+    networks:
+      - services
+
+  cache:
+    container_name: pterodactyl-cache
+    image: redis:alpine
+    restart: always
+    networks:
+      - services
+
+  panel:
+    container_name: pterodactyl-app
+    image: ghcr.io/pterodactyl/panel:latest
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - database
+      - cache
+    volumes:
+      - "/Storage/.Docker/pterodactyl/var/:/app/var/"
+      - "/Storage/.Docker/pterodactyl/nginx/:/etc/nginx/http.d/"
+      - "/Storage/.Docker/pterodactyl/certs/:/etc/letsencrypt/"
+      - "/Storage/.Docker/pterodactyl/logs/:/app/storage/logs"
+    environment:
+      APP_URL: ${APP_URL}
+      APP_TIMEZONE: ${APP_TIMEZONE}
+      APP_SERVICE_AUTHOR: ${APP_SERVICE_AUTHOR}
+      MAIL_FROM: ${MAIL_FROM}
+      MAIL_DRIVER: ${MAIL_DRIVER}
+      MAIL_HOST: ${MAIL_HOST}
+      MAIL_PORT: ${MAIL_PORT}
+      MAIL_USERNAME: $MAIL_USERNAME
+      MAIL_PASSWORD: $MAIL_PASSWORD
+      MAIL_ENCRYPTION: ${MAIL_ENCRYPTION}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      APP_ENV: "production"
+      APP_ENVIRONMENT_ONLY: "false"
+      CACHE_DRIVER: "redis"
+      SESSION_DRIVER: "redis"
+      QUEUE_DRIVER: "redis"
+      REDIS_HOST: "cache"
+      DB_HOST: "database"
+      DB_PORT: "3306"
+    networks:
+      - services
+
+networks:
+  services:
+    name: services
+    external: true
