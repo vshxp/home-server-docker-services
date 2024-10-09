@@ -1,7 +1,7 @@
 ---
 services:
   nextcloud_db:
-    image: postgres:alpine
+    image: postgres:16-alpine
     container_name: nextcloud-db
     restart: always
     volumes:
