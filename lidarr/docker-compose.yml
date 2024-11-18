@@ -1,0 +1,28 @@
+---
+services:
+  lidarr:
+    image: lscr.io/linuxserver/lidarr:latest
+    container_name: lidarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Sao_Paulo
+    volumes:
+      - /path/to/lidarr/config:/config
+      - /Storage/Media/:/Storage/Media
+    labels:
+      - io.portainer.accesscontrol.public
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    networks:
+      - services
+    ports:
+      - 8686:8686
+    restart: unless-stopped
+
+networks:
+  services:
+    name: services
+    external: true
