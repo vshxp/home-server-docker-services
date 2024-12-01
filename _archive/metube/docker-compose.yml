@@ -7,12 +7,12 @@ services:
       - UID=1000
       - GID=1000
       - DEFAULT_THEME=dark
-      - /Storage/Media/youtube=/downloads/audio
       - URL_PREFIX='http://yt.matfor.local'
+      - TEMP_DIR=/Storage/.Docker/metube/temp
     # ports:
     #   - "8081:8081"
     volumes:
-      - /Storage/Media/youtube:/downloads
+      - /Storage/Media/metube:/downloads
     networks:
       - services
 
