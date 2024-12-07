@@ -101,8 +101,15 @@ run_auto_clean(){
 is_destroy() {
   # Check if the destroy parameter was passed to the script
   if [[ "$1" == "destroy" ]]; then
-    destroy_environment
+    read -p "Are you sure you want to destroy the environment? (y/n): " confirm
+    if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then
+      destroy_environment
+    else
+      echo "Destroy operation canceled."
+      exit 0
+    fi
   fi
+  
 }
 destroy_environment() {
   # Loop through each subdirectory and perform docker compose down
