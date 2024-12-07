@@ -3,7 +3,7 @@ services:
   tubesync:
     image: ghcr.io/meeb/tubesync:latest
     container_name: tubesync
-    restart: unless-stopped
+    restart: always
     labels:
       - io.portainer.accesscontrol.public
     ports:

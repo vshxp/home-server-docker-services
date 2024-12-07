@@ -28,7 +28,7 @@ check_docker() {
 check_docker_compose() {
   #Check if a docker is installed, if not install it
   
-  if command -v docker-compose &>/dev/null; then
+  if command -v docker compose &>/dev/null; then
     echo "Docker is installed."
   else
     echo "Docker is not installed."   
@@ -73,7 +73,7 @@ run_docker_compose(){
   echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
   for dir in ./*; do
     if [[ -d "$dir" && ! "$dir" == *_archive*  ]]; then
-      (cd "$dir" && sudo docker-compose up -d --remove-orphans && cd ..)
+      (cd "$dir" && sudo docker compose up -d --remove-orphans && cd ..)
     fi
   done
 
