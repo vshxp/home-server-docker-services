@@ -98,6 +98,23 @@ run_auto_clean(){
   sudo rm -rf ~/.local/share/Trash/*
   rm -rf ~/.local/share/Trash/*
 }
+is_destroy() {
+  # Check if the destroy parameter was passed to the script
+  if [[ "$1" == "destroy" ]]; then
+    destroy_environment
+  fi
+}
+destroy_environment() {
+  # Loop through each subdirectory and perform docker compose down
+  for dir in ./*; do
+    if [[ -d "$dir" && ! "$dir" == *_archive* ]]; then
+      (cd "$dir" && sudo docker compose down && cd ..)
+    fi
+  done
+  echo "Docker images destroyed"
+  exit 0
+}
+is_destroy $1
 check_docker
 check_docker_network "services"
 pull_docker_images
