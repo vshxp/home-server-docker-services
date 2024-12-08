@@ -40,7 +40,7 @@ services:
     labels:
       - io.portainer.accesscontrol.public
     volumes:
-      - db_data:/var/lib/mysql
+      - /Storage/.Docker/nginx-proxy-manager/database:/var/lib/mysql
     networks:
       - services
 
@@ -48,6 +48,3 @@ networks:
   services:
     name: services
     external: true
-
-volumes:
-  db_data:

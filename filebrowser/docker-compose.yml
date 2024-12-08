@@ -4,6 +4,7 @@ services:
     image: filebrowser/filebrowser
 #    user: ${USER}
     container_name: filebrowser
+    restart: unless-stopped
     volumes:
       - '/Storage/Public:/srv'
       - /Storage/.Docker/filebrowser/db:/database

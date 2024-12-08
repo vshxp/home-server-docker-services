@@ -5,75 +5,93 @@
 - Infra Services:
     - Proxmox:
         icon: proxmox.svg
-        href: "{{HOMEPAGE_VAR_PROXMOX_URL }}"
+        href: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
         description: Hypervisor server
+        ping: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
         widget:
             type: proxmox
-            url: "{{HOMEPAGE_VAR_PROXMOX_URL }}"
-            username:  "{{HOMEPAGE_VAR_PROXMOX_USER }}"
-            password:  "{{HOMEPAGE_VAR_PROXMOX_API_KEY }}"
+            url: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
+            username:  "{{HOMEPAGE_VAR_PROXMOX_USER}}"
+            password:  "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
             node: zion
 
     - Portainer:
         icon: portainer.png
-        href: {{HOMEPAGE_VAR_PORTAINER_URL}}
+        href: "{{HOMEPAGE_VAR_PORTAINER_URL}}"
+        ping: "{{HOMEPAGE_VAR_PORTAINER_URL}}"
         widget:
             type: portainer
-            url: "{{HOMEPAGE_VAR_PORTAINER_URL }}"
+            url: "{{HOMEPAGE_VAR_PORTAINER_URL}}"
             env: 2
-            key: "{{HOMEPAGE_VAR_PORTAINER_API_KEY }}"
+            key: "{{HOMEPAGE_VAR_PORTAINER_API_KEY}}"
 
     - Pihole:
         icon: pi-hole.png
         href: "{{HOMEPAGE_VAR_PIHOLE_URL}}"
         description: DNS Server
+        ping: "{{HOMEPAGE_VAR_PIHOLE_URL}}"
         widget:
             type: pihole
-            url: "{{HOMEPAGE_VAR_PIHOLE_WIDGET_URL }}"
-            key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY }}"
+            url: "{{HOMEPAGE_VAR_PIHOLE_WIDGET_URL}}"
+            key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY}}"
     - Proxy:
         icon: nginx-proxy-manager.png
-        href: "{{HOMEPAGE_VAR_PROXY_URL }}"
+        href: "{{HOMEPAGE_VAR_PROXY_URL}}"
+        ping: "{{HOMEPAGE_VAR_PROXY_URL}}"
         description: Internal proxy
         widget:
             widget:
             type: npm
             url: "{{HOMEPAGE_VAR_PROXY_URL}}"
-            username: "{{HOMEPAGE_VAR_PROXY_USERNAME }}"
-            password: "{{HOMEPAGE_VAR_PROXY_PASSWORD }}"
+            username: "{{HOMEPAGE_VAR_PROXY_USERNAME}}"
+            password: "{{HOMEPAGE_VAR_PROXY_PASSWORD}}"
+
+    - VPN:
+        icon: wireguard.png
+        href: "{{HOMEPAGE_VAR_VPN_URL}}"
+        ping: "{{HOMEPAGE_VAR_VPN_URL}}"
+        description: VPN Server
+        widget:
+            type: wgeasy
+            url: "{{HOMEPAGE_VAR_VPN_URL}}"
+            password: "{{HOMEPAGE_VAR_VPN_PASSWORD}}"
+            threshold: 2
 
 - Media:
-    - Jellyfin:
-        icon: jellyfin.png
-        href: "{{HOMEPAGE_VAR_JELLYFIN_URL }}"
-        description: Media stream
-        widget:
-            type: jellyfin
-            url: "{{HOMEPAGE_VAR_JELLYFIN_URL }}"
-            key: "{{HOMEPAGE_VAR_JELLYFIN_API_KEY }}"
-            enableBlocks: true # optional, defaults to false
-            enableNowPlaying: true # optional, defaults to true
-            enableUser: true # optional, defaults to false
-            showEpisodeNumber: true # optional, defaults to false
-            expandOneStreamToTwoRows: false # optional, defaults to true
+    # - Jellyfin:
+    #     icon: jellyfin.png
+    #     href: "{{HOMEPAGE_VAR_JELLYFIN_URL}}"
+    #     ping: "{{HOMEPAGE_VAR_JELLYFIN_URL}}"
+    #     description: Media stream
+    #     widget:
+    #         type: jellyfin
+    #         url: "{{HOMEPAGE_VAR_JELLYFIN_URL}}"
+    #         key: "{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}"
+    #         enableBlocks: true # optional, defaults to false
+    #         enableNowPlaying: true # optional, defaults to true
+    #         enableUser: true # optional, defaults to false
+    #         showEpisodeNumber: true # optional, defaults to false
+    #         expandOneStreamToTwoRows: false # optional, defaults to true
 
     - Jellyseerr:
         icon: jellyseerr.png
-        href: "{{HOMEPAGE_VAR_JELLYSEERR_URL }}"
+        href: "{{HOMEPAGE_VAR_JELLYSEERR_URL}}"
         description: Media Requests
+        ping: "{{HOMEPAGE_VAR_JELLYSEERR_URL}}"
         widget:
             type: jellyseerr
-            url: "{{HOMEPAGE_VAR_JELLYSEERR_URL }}"
-            key: "{{HOMEPAGE_VAR_JELLYSEERR_API_KEY }}"
+            url: "{{HOMEPAGE_VAR_JELLYSEERR_URL}}"
+            key: "{{HOMEPAGE_VAR_JELLYSEERR_API_KEY}}"
 
     - Emby:
         icon: emby.png
-        href: "{{HOMEPAGE_VAR_EMBY_URL }}"
+        href: "{{HOMEPAGE_VAR_EMBY_URL}}"
+        ping: "{{HOMEPAGE_VAR_EMBY_URL}}"
         description: Media stream
         widget:
             type: emby
-            url: "{{HOMEPAGE_VAR_EMBY_URL }}"
-            key: "{{HOMEPAGE_VAR_EMBY_API_KEY }}"
+            url: "{{HOMEPAGE_VAR_EMBY_URL}}"
+            key: "{{HOMEPAGE_VAR_EMBY_API_KEY}}"
             enableBlocks: true # optional, defaults to false
             enableNowPlaying: true # optional, defaults to true
             enableUser: true # optional, defaults to false
@@ -82,103 +100,149 @@
 
     - Radarr:
         icon: radarr.png
-        href: "{{HOMEPAGE_VAR_RADARR_URL }}"
+        href: "{{HOMEPAGE_VAR_RADARR_URL}}"
+        ping: "{{HOMEPAGE_VAR_RADARR_URL}}"
         description: Movie library indexer
         widget:
             type: radarr
-            url: "{{HOMEPAGE_VAR_RADARR_URL }}"
-            key: "{{HOMEPAGE_VAR_RADARR_API_KEY }}"
+            url: "{{HOMEPAGE_VAR_RADARR_URL}}"
+            key: "{{HOMEPAGE_VAR_RADARR_API_KEY}}"
             enableQueue: true
 
     - Sonarr:
         icon: sonarr.png
-        href: "{{HOMEPAGE_VAR_SONARR_URL }}"
+        href: "{{HOMEPAGE_VAR_SONARR_URL}}"
+        ping: "{{HOMEPAGE_VAR_SONARR_URL}}"
         description: Tv-Show library indexer
         widget:
             type: sonarr
-            url: "{{HOMEPAGE_VAR_SONARR_URL }}"
-            key: "{{HOMEPAGE_VAR_SONARR_API_KEY }}"
+            url: "{{HOMEPAGE_VAR_SONARR_URL}}"
+            key: "{{HOMEPAGE_VAR_SONARR_API_KEY}}"
+            enableQueue: true
+
+    - Lidarr:
+        icon: lidarr.png
+        href: "{{HOMEPAGE_VAR_LIDARR_URL}}"
+        ping: "{{HOMEPAGE_VAR_LIDARR_URL}}"
+        description: Music library indexer
+        widget:
+            type: lidarr
+            url: "{{HOMEPAGE_VAR_LIDARR_URL}}"
+            key: "{{HOMEPAGE_VAR_LIDARR_API_KEY}}"
             enableQueue: true
 
     - Prowlarr:
         icon: prowlarr.png
-        href: "{{HOMEPAGE_VAR_PROWLARR_URL }}"
+        href: "{{HOMEPAGE_VAR_PROWLARR_URL}}"
+        ping: "{{HOMEPAGE_VAR_PROWLARR_URL}}"
         description: Torrent library indexer
         widget:
             type: prowlarr
-            url: "{{HOMEPAGE_VAR_PROWLARR_URL }}"
-            key: "{{HOMEPAGE_VAR_PROWLARR_API_KEY }}"
+            url: "{{HOMEPAGE_VAR_PROWLARR_URL}}"
+            key: "{{HOMEPAGE_VAR_PROWLARR_API_KEY}}"
             enableQueue: true
 
     - Bazarr:
         icon: bazarr.png
-        href: "{{HOMEPAGE_VAR_BAZARR_URL }}"
+        href: "{{HOMEPAGE_VAR_BAZARR_URL}}"
+        ping: "{{HOMEPAGE_VAR_BAZARR_URL}}"
         description: Torrent library indexer
         widget:
-            type: prowlarr
-            url: "{{HOMEPAGE_VAR_BAZARR_URL }}"
-            key: "{{HOMEPAGE_VAR_BAZARR_API_KEY }}"
+            type: bazarr
+            url: "{{HOMEPAGE_VAR_BAZARR_URL}}"
+            key: "{{HOMEPAGE_VAR_BAZARR_API_KEY}}"
             enableQueue: true
 
     - Transmission:
         icon: transmission.png
-        href: "{{HOMEPAGE_VAR_TRANSMISSION_URL }}"
+        href: "{{HOMEPAGE_VAR_TRANSMISSION_URL}}"
+        ping: "{{HOMEPAGE_VAR_TRANSMISSION_URL}}"
         description: Torrent downloader
         widget:
             type: transmission
-            url: "{{HOMEPAGE_VAR_TRANSMISSION_URL }}"
-            username: "{{HOMEPAGE_VAR_TRANSMISSION_USERNAME }}"
-            password: "{{HOMEPAGE_VAR_TRANSMISSION_PASSWORD }}"
+            url: "{{HOMEPAGE_VAR_TRANSMISSION_URL}}"
+            username: "{{HOMEPAGE_VAR_TRANSMISSION_USERNAME}}"
+            password: "{{HOMEPAGE_VAR_TRANSMISSION_PASSWORD}}"
 
     - Jdownloader:
         icon: jdownloader.png
-        href: "{{HOMEPAGE_VAR_JDOWNLOADER_URL }}"
+        href: "{{HOMEPAGE_VAR_JDOWNLOADER_URL}}"
+        ping: "{{HOMEPAGE_VAR_JDOWNLOADER_URL}}"
         description: Http downloader
 
     - Filebrowser:
         icon: filebrowser.png
-        href: "{{HOMEPAGE_VAR_FILEBROWSER_URL }}"
+        href: "{{HOMEPAGE_VAR_FILEBROWSER_URL}}"
+        ping: "{{HOMEPAGE_VAR_FILEBROWSER_URL}}"
         description: Http file share
 
     - NAS:
         icon: synology.png
-        href: "{{HOMEPAGE_VAR_NAS_URL }}"
+        href: "{{HOMEPAGE_VAR_NAS_URL}}"
+        ping: "{{HOMEPAGE_VAR_NAS_URL}}"
         description: Network file share
 
     - Nextcloud:
         icon: nextcloud.png
-        href: "{{HOMEPAGE_VAR_NEXTLOUD_URL }}"
+        href: "{{HOMEPAGE_VAR_NEXTLOUD_URL}}"
+        ping: "{{HOMEPAGE_VAR_NEXTLOUD_URL}}"
         description: Private cloud
+        # widget:
+        #     type: nextcloud
+        #     url: "{{HOMEPAGE_VAR_NEXTLOUD_MONITORING_URL}}"
+        #     key: "{{HOMEPAGE_VAR_NEXTLOUD_MONITORING_APIKEY}}"
+
+    - PDF:
+        icon: stirling-pdf.png
+        href: "{{HOMEPAGE_VAR_STIRLING_TOOLS_URL}}"
+        ping: "{{HOMEPAGE_VAR_STIRLING_TOOLS_URL}}"
+        description: Many pdf tools, better than I love PDF.
+
+    - youtube-downloader:
+        icon: metube.png
+        href: "{{HOMEPAGE_VAR_METUBE_URL}}"
+        ping: "{{HOMEPAGE_VAR_METUBE_URL}}"
+        description: Used to download a single video from youtube.
+    
+    - youtube-sync:
+        icon: tubesync.png
+        href: "{{HOMEPAGE_VAR_TUBESYNC_URL}}"
+        ping: "{{HOMEPAGE_VAR_TUBESYNC_URL}}"
+        description: Used to download a youtube playlist to be listened/watched on emby.
 
 - Network:
     - Load Balancer:
         icon: tp-link.png
-        href: "{{HOMEPAGE_VAR_LOADBALANCER_URL }}"
+        href: "{{HOMEPAGE_VAR_LOADBALANCER_URL}}"
+        ping: "{{HOMEPAGE_VAR_LOADBALANCER_URL}}"
         description: Internal load balancer
     - Wifi Access point 01:
         icon: huawei.png
-        href: "{{HOMEPAGE_VAR_AP01_URL }}"
+        href: "{{HOMEPAGE_VAR_AP01_URL}}"
+        ping: "{{HOMEPAGE_VAR_AP01_URL}}"
         description: Living room access point
     - Wifi Access point 02:
         icon: huawei.png
-        href: "{{HOMEPAGE_VAR_AP02_URL }}"
+        href: "{{HOMEPAGE_VAR_AP02_URL}}"
+        ping: "{{HOMEPAGE_VAR_AP02_URL}}"
         description: Office access point
 
+        
     - Uptime Kuma:
         icon: uptime-kuma.svg
-        href: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL }}"
-        description: Internal monitoring
+        href: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
+        ping: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
+        description: internal
         widget:
             type: uptimekuma
-            url: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL }}"
+            url: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
             slug: home
 
     - Speed Test:
         icon: speedtest-tracker.png
-        href: "{{HOMEPAGE_VAR_SPEEDTEST_URL }}"
-        description: Internet speed monitor
+        href: "{{HOMEPAGE_VAR_SPEEDTEST_URL}}"
+        ping: "{{HOMEPAGE_VAR_SPEEDTEST_URL}}"
         widget:
-            type: speedtest
-            url: "{{HOMEPAGE_VAR_SPEEDTEST_URL }}"
-            bitratePrecision: 2
-
+          type: speedtest
+          url: "{{HOMEPAGE_VAR_SPEEDTEST_URL}}"
+          bitratePrecision: 3

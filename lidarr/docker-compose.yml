@@ -8,7 +8,7 @@ services:
       - PGID=1000
       - TZ=America/Sao_Paulo
     volumes:
-      - /path/to/lidarr/config:/config
+      - /Storage/.Docker/lidarr/config:/config
       - /Storage/Media/:/Storage/Media
     labels:
       - io.portainer.accesscontrol.public
