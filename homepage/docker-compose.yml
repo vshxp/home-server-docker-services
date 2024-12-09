@@ -20,6 +20,8 @@ services:
           memory: 512M
     networks:
       - services
+    # ports:
+    #   - 3000:3000
 
 networks:
   services:

@@ -1,4 +1,4 @@
-version: "3.8"
+---
 services:
   embyserver:
     image: lscr.io/linuxserver/emby:latest
@@ -7,8 +7,8 @@ services:
       - '/Storage/.Docker/emby/data:/var/lib/emby'
       - '/Storage/.Docker/emby/config:/config'
       - '/Storage/Media:/Storage/Media'
-    ports:
-      - 8096:8096
+    # ports:
+    #   - 8096:8096
     environment:
       - PUID=1000
       - PGID=1000

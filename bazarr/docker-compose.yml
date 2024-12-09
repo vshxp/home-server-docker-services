@@ -13,8 +13,8 @@ services:
       - /Storage/Media/movies:/Storage/Media/movies
     labels:
       - io.portainer.accesscontrol.public
-    ports:
-      - 6767:6767
+    # ports:
+    #   - 6767:6767
     restart: unless-stopped
     networks:
       - services

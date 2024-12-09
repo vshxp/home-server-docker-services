@@ -14,7 +14,7 @@ services:
       - /Storage/Media/downloads/torrent:/Storage/Media/downloads/torrent
       - /etc/localtime:/etc/localtime:ro
     ports:
-      - 9091:9091
+      # - 9091:9091
       - 51413:51413
       - 51413:51413/udp
     labels:

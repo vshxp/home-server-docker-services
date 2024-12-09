@@ -6,8 +6,8 @@ services:
     restart: always
     labels:
       - io.portainer.accesscontrol.public
-    ports:
-      - 4848:4848
+    # ports:
+    #   - 4848:4848
     volumes:
       - /Storage/.Docker/Tubesync/config:/config
       - /Storage/Media/Tubesync:/downloads

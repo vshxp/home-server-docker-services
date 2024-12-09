@@ -28,8 +28,8 @@ services:
     image: nextcloud:apache
     container_name: nextcloud-app
     restart: always
-    ports:
-      - 8080:80
+    # ports:
+    #   - 8080:80
     volumes:
       - /Storage/.Docker/nextcloud/data:/var/www/html:z
     environment:

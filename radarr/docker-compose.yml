@@ -10,8 +10,8 @@ services:
     volumes:
       - /Storage/.Docker/radarr/config:/config
       - /Storage/Media/:/Storage/Media
-    ports:
-      - 7878:7878
+    # ports:
+    #   - 7878:7878
     labels:
       - io.portainer.accesscontrol.public
     restart: unless-stopped
