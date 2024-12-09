@@ -1,20 +1,13 @@
-version: "3"
-
-volumes:
-  files:
-    driver: local
-  mysql:
-    driver: local
-  redis:
-    driver: local
-
+---
 services:
   owncloud:
     image: owncloud/server:${OWNCLOUD_VERSION}
-    container_name: owncloud_server
+    container_name: owncloud-app
     restart: always
-    ports:
-      - ${HTTP_PORT}:8080
+    networks:
+      - services
+    # ports:
+    #   - ${HTTP_PORT}:8080
     depends_on:
       - mariadb
       - redis
@@ -41,7 +34,7 @@ services:
 
   mariadb:
     image: mariadb:10.11 # minimum required ownCloud version is 10.9
-    container_name: owncloud_mariadb
+    container_name: owncloud-db
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=owncloud
@@ -57,10 +50,12 @@ services:
       retries: 5
     volumes:
       - /Storage/.Docker/owncloud/database/data:/var/lib/mysql
+    networks:
+      - services
 
   redis:
     image: redis:6
-    container_name: owncloud_redis
+    container_name: owncloud-redis
     restart: always
     command: ["--databases", "1"]
     healthcheck:
@@ -70,3 +65,15 @@ services:
       retries: 5
     volumes:
       - redis:/data
+    networks:
+      - services
+
+networks:
+  services:
+    name: services
+    external: true
+
+volumes:
+  redis:
+    driver: local
+
