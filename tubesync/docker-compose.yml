@@ -6,8 +6,9 @@ services:
     restart: always
     labels:
       - io.portainer.accesscontrol.public
-    # ports:
-    #   - 4848:4848
+      - traefik.enable=true
+      - traefik.http.routers.tubesync.rule=Host(`${PRIVATE_DOMAIN}`)
+      - traefik.http.services.tubesync.loadbalancer.server.port=4848
     volumes:
       - /Storage/.Docker/Tubesync/config:/config
       - /Storage/Media/Tubesync:/downloads

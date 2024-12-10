@@ -12,14 +12,15 @@ services:
       - /Storage/Media/:/Storage/Media
     labels:
       - io.portainer.accesscontrol.public
+      - traefik.enable=true
+      - traefik.http.routers.lidarr.rule=Host(`${PRIVATE_DOMAIN}`)
+      - traefik.http.services.lidarr.loadbalancer.server.port=8686
     deploy:
       resources:
         limits:
           memory: 2048M
     networks:
       - services
-    # ports:
-    #   - 8686:8686
     restart: unless-stopped
 
 networks:

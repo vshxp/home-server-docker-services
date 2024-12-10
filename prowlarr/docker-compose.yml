@@ -9,10 +9,11 @@ services:
       - TZ=America/Sao_Paulo
     volumes:
       - /Storage/.Docker/prowlarr/config:/config
-    # ports:
-    #   - 9696:9696
     labels:
       - io.portainer.accesscontrol.public
+      - traefik.enable=true
+      - traefik.http.routers.prowlarr.rule=Host(`${PRIVATE_DOMAIN}`)
+      - traefik.http.services.prowlarr.loadbalancer.server.port=9696
     restart: unless-stopped
     deploy:
       resources:

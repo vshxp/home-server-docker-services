@@ -6,8 +6,6 @@ services:
     environment:
       - TZ=America/Sao_Paulo
       - JELLYFIN_TYPE=emby
-    # ports:
-    #   - 5055:5055
     volumes:
       - /Storage/.Docker/jellyseerr/config:/app/config
       - /Storage/Media:/Storage/Media
@@ -20,6 +18,9 @@ services:
       - services
     labels:
       - io.portainer.accesscontrol.public
+      - traefik.enable=true
+      - traefik.http.routers.jellyseerr.rule=Host(`${PRIVATE_DOMAIN}`) || Host(`${PRIVATE_DOMAIN2}`) || Host(`${PUBLIC_DOMAIN}`)
+      - traefik.http.services.jellyseerr.loadbalancer.server.port=5055
       
 networks:
   services:

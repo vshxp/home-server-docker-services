@@ -3,11 +3,11 @@ services:
     image: frooodle/s-pdf:latest
     container_name: stirling-pdf
     restart: unless-stopped
-
-    # ports:
-    #   - '8080:8080'
     labels:
       - io.portainer.accesscontrol.public
+      - traefik.enable=true
+      - traefik.http.routers.stirling-pdf.rule=Host(`${PRIVATE_DOMAIN}`)
+      - traefik.http.services.stirling-pdf.loadbalancer.server.port=8080
     volumes:
       - /Storage/.Docker/stirling/trainingData:/usr/share/tessdata #Required for extra OCR languages
       - /Storage/.Docker/stirling/configs:/configs

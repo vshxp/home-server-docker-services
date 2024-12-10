@@ -14,14 +14,15 @@ services:
     restart: unless-stopped
     labels:
       - io.portainer.accesscontrol.public
+      - traefik.enable=true
+      - traefik.http.routers.homepage.rule=Host(`${DOMAIN_NAME}`)
+      - traefik.http.services.homepage.loadbalancer.server.port=3000
     deploy:
       resources:
         limits:
           memory: 512M
     networks:
       - services
-    # ports:
-    #   - 3000:3000
 
 networks:
   services:
