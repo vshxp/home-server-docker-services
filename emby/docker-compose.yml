@@ -7,8 +7,6 @@ services:
       - '/Storage/.Docker/emby/data:/var/lib/emby'
       - '/Storage/.Docker/emby/config:/config'
       - '/Storage/Media:/Storage/Media'
-    # ports:
-    #   - 8096:8096
     environment:
       - PUID=1000
       - PGID=1000
@@ -19,6 +17,9 @@ services:
           memory: 4096M
     labels:
       - io.portainer.accesscontrol.public
+      - traefik.enable=true
+      - traefik.http.routers.embyserver.rule=Host(`${PRIVATE_DOMAIN}`) || Host(`${PUBLIC_DOMAIN}`)
+      - traefik.http.services.embyserver.loadbalancer.server.port=8096
     networks:
       - services
 

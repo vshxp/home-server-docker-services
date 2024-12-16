@@ -28,8 +28,6 @@ services:
     image: nextcloud:apache
     container_name: nextcloud-app
     restart: always
-    # ports:
-    #   - 8080:80
     volumes:
       - /Storage/.Docker/nextcloud/data:/var/www/html:z
     environment:
@@ -38,11 +36,20 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
+      - NEXTCLOUD_TRUSTED_DOMAINS=${NEXTCLOUD_TRUSTED_DOMAINS}
     depends_on:
       - nextcloud_db
       - nextcloud_redis
     labels:
       - io.portainer.accesscontrol.public
+      - traefik.enable=true
+      - traefik.http.routers.nextcloud_app.rule=Host(`${PRIVATE_DOMAIN}`) || Host(`${PUBLIC_DOMAIN}`)
+      - traefik.http.services.nextcloud_app.loadbalancer.server.port=80
+      # - traefik.http.routers.nextcloud.middlewares='nextcloud_redirectregex'
+      # - traefik.http.middlewares.nextcloud_redirectregex.redirectregex.permanent=true
+      # - traefik.http.middlewares.nextcloud_redirectregex.redirectregex.regex='https://(.*)/.well-known/(?:card|cal)dav'
+      # - traefik.http.middlewares.nextcloud_redirectregex.redirectregex.replacement=https://$${1}/remote.php/dav'
+
     networks:
       - services
 

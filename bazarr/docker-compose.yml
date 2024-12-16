@@ -13,8 +13,9 @@ services:
       - /Storage/Media/movies:/Storage/Media/movies
     labels:
       - io.portainer.accesscontrol.public
-    # ports:
-    #   - 6767:6767
+      - traefik.enable=true
+      - traefik.http.routers.bazarr.rule=Host(`${DOMAIN_NAME}`)
+      - traefik.http.services.bazarr.loadbalancer.server.port=6767
     restart: unless-stopped
     networks:
       - services

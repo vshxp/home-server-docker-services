@@ -5,11 +5,13 @@ services:
     restart: unless-stopped
     env_file:
       - .env
-    # ports:
-    #   - "8081:8081"
     volumes:
       - /Storage/Media/metube:/downloads
       - /Storage/.Docker/metube/config:/app/config
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.metube.rule=Host(`${DOMAIN_NAME}`)
+      - traefik.http.services.metube.loadbalancer.server.port=8081
     networks:
       - services
 

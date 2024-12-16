@@ -34,17 +34,37 @@
             type: pihole
             url: "{{HOMEPAGE_VAR_PIHOLE_WIDGET_URL}}"
             key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY}}"
-    - Proxy:
-        icon: nginx-proxy-manager.png
-        href: "{{HOMEPAGE_VAR_PROXY_URL}}"
+
+    - Cloudflared:
+        icon: cloudflare
+        description: ZTNA Client
+        ping: "{{HOMEPAGE_VAR_CLOUDFLARED_URL}}"
+        widget:
+            type: cloudflared
+            accountid: "{{HOMEPAGE_VAR_CLOUDFLARED_ACCOUNT_ID}}"    # from zero trust dashboard url e.g. https://one.dash.cloudflare.com/<accountid>/home/quick-start
+            tunnelid: "{{HOMEPAGE_VAR_CLOUDFLARED_TUNNEL_ID}}"      # found in tunnels dashboard under the tunnel name
+            key: "{{HOMEPAGE_VAR_CLOUDFLARED_TOKEN}}"               # api token with `Account.Cloudflare Tunnel:Read` https://dash.cloudflare.com/profile/api-tokens
+
+    # - Proxy:
+    #     icon: nginx-proxy-manager.png
+    #     href: "{{HOMEPAGE_VAR_PROXY_URL}}"
+    #     ping: "{{HOMEPAGE_VAR_PROXY_URL}}"
+    #     description: Internal proxy
+    #     widget:
+    #         widget:
+    #         type: npm
+    #         url: "{{HOMEPAGE_VAR_PROXY_URL}}"
+    #         username: "{{HOMEPAGE_VAR_PROXY_USERNAME}}"
+    #         password: "{{HOMEPAGE_VAR_PROXY_PASSWORD}}"
+
+    - Traefik:
+        icon: traefik.png
+        href: "{{HOMEPAGE_VAR_PROXY_URL}}/dashboard"
         ping: "{{HOMEPAGE_VAR_PROXY_URL}}"
         description: Internal proxy
         widget:
-            widget:
-            type: npm
+            type: traefik
             url: "{{HOMEPAGE_VAR_PROXY_URL}}"
-            username: "{{HOMEPAGE_VAR_PROXY_USERNAME}}"
-            password: "{{HOMEPAGE_VAR_PROXY_PASSWORD}}"
 
     - VPN:
         icon: wireguard.png
@@ -191,6 +211,17 @@
         #     type: nextcloud
         #     url: "{{HOMEPAGE_VAR_NEXTLOUD_MONITORING_URL}}"
         #     key: "{{HOMEPAGE_VAR_NEXTLOUD_MONITORING_APIKEY}}"
+
+    - Immich:
+        icon: immich.png
+        href: "{{HOMEPAGE_VAR_IMMICH_URL}}"
+        ping: "{{HOMEPAGE_VAR_IMMICH_URL}}"
+        description: Backup photo galery.
+        widget:
+            type: immich
+            url: "{{HOMEPAGE_VAR_IMMICH_URL}}"
+            key: "{{HOMEPAGE_VAR_IMMICH_KEY_URL}}"
+            version: 2 
 
     - PDF:
         icon: stirling-pdf.png

@@ -10,10 +10,11 @@ services:
     volumes:
       - /Storage/.Docker/sonarr/config:/config
       - /Storage/Media/:/Storage/Media
-    # ports:
-    #   - 8989:8989
     labels:
       - io.portainer.accesscontrol.public
+      - traefik.enable=true
+      - traefik.http.routers.sonarr.rule=Host(`${PRIVATE_DOMAIN}`)
+      - traefik.http.services.sonarr.loadbalancer.server.port=8989
     restart: unless-stopped
     deploy:
       resources:

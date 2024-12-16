@@ -13,7 +13,7 @@ sudo systemctl status systemd-resolved.service
 
 ```
 
-change the dns ip to 1.1.1.1 -> this will allow the server do resolve dns names
+change the dns ip to 1.1.1.1 -> this will allow the server do resolve external dns names
 
 ```
 sudo nano /etc/resolv.conf

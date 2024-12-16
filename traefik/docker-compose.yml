@@ -1,0 +1,25 @@
+---
+services:
+  traefik:
+    image: traefik:v3.2 # The official v3 Traefik docker image
+    container_name: traefik
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    dns:
+      - ${CUSTOM_DNS_PROVIDER}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./config/traefik.yaml:/etc/traefik/traefik.yaml:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.traefik.rule=Host(`${PRIVATE_DOMAIN}`)
+      - traefik.http.services.traefik.loadbalancer.server.port=8080
+    networks:
+      - services
+
+networks:
+  services:
+    name: services
+    external: true

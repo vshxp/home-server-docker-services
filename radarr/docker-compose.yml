@@ -10,10 +10,11 @@ services:
     volumes:
       - /Storage/.Docker/radarr/config:/config
       - /Storage/Media/:/Storage/Media
-    # ports:
-    #   - 7878:7878
     labels:
       - io.portainer.accesscontrol.public
+      - traefik.enable=true
+      - traefik.http.routers.radarr.rule=Host(`${PRIVATE_DOMAIN}`)
+      - traefik.http.services.radarr.loadbalancer.server.port=7878
     restart: unless-stopped
     deploy:
       resources:

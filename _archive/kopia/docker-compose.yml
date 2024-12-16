@@ -1,0 +1,37 @@
+---
+services:
+  kopia:
+    image: kopia/kopia:latest
+    hostname: Kopia
+    container_name: Kopia-app
+    restart: unless-stopped
+    ports:
+      - 51515:51515
+    command:
+      - server
+      - start
+      - --disable-csrf-token-checks
+      - --insecure
+      - --address=0.0.0.0:51515
+      - --server-username=${SERVER_USERNAME}
+      - --server-password=${SERVER_PASSWORD}
+    labels:
+      - io.portainer.accesscontrol.public
+      - traefik.enable=true
+      - traefik.http.routers.lidarr.rule=Host(`${PRIVATE_DOMAIN}`)
+      - traefik.http.services.lidarr.loadbalancer.server.port=:51515
+    environment:
+      # Set repository password
+      KOPIA_PASSWORD: ${KOPIA_PASSWORD}
+      USER: ${KOPIA_USER}
+    volumes:
+      # Mount local folders needed by kopia
+      - /Storage/.Docker/kopia/config/dir:/app/config
+      - /Storage/.Docker/kopia/cache/dir:/app/cache
+      - /Storage/.Docker/kopia/logs/dir:/app/logs
+      # Mount local folders to snapshot
+      - /Storage/Backups/Cloud:/data:ro
+      # Mount repository location
+      # - /path/to/repository/dir:/repository
+      # # Mount path for browsing mounted snaphots
+      # - /path/to/tmp/dir:/tmp:shared
