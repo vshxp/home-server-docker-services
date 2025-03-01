@@ -349,8 +349,8 @@ is_update() {
 install_hsds-cli(){
   latest_version=$(curl -s https://api.github.com/repos/vshxp/home-server-docker-services/releases/latest | grep tag_name | cut -d '"' -f 4)
   echo "Installing hsds-cli v${latest_version}..."
-  # curl -s "https://raw.githubusercontent.com/vshxp/home-server-docker-services/${latest_version}/install.sh" | bash
-  
+  sudo curl -sL "https://raw.githubusercontent.com/vshxp/home-server-docker-services/refs/tags/${latest_version}/debian-auto-installer.sh" -o /usr/local/bin/hsds
+  sudo chmod +x /usr/local/bin/hsds
 }
 
 is_list() {
