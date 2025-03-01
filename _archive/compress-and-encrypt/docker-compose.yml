@@ -13,8 +13,6 @@ services:
     labels:
       - io.portainer.accesscontrol.public
     volumes:
-      - /Storage/.Docker/nextcloud/data/data/admin/files:/input_dir/admin
-      - /Storage/.Docker/nextcloud/data/data/${USER_PROFILE_01}/files:/input_dir/${USER_PROFILE_01}
       - /Storage/Backups/Companies:/input_dir/companies
-      - /Storage/Backups/Cloud:/output_dir
+      - /Storage/Backups/Encrypted:/output_dir
     network_mode: "host"        

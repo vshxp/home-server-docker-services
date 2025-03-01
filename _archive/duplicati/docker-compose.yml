@@ -9,10 +9,15 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=America/Sao_Paulo
+      - SETTINGS_ENCRYPTION_KEY=${SETTINGS_ENCRYPTION_KEY}
     volumes:
       - /Storage/.Docker/duplicati/config:/config
       - /Storage/Backups/Cloud:/backups
-      - /Storage:/source
+      - /Storage/Backups/immich:/backup/immich
+      - /Storage/Backups/syncthing:/backup/syncthing
+      - /Storage/Backups/proxmox:/backup/proxmox
+
+
     restart: unless-stopped
     networks:
       - services
