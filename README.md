@@ -11,22 +11,24 @@ Any Debian based linux distribution.
 Just run the install command. It ll install docker and all dependencies to run the services.
 
 ```bash
-./debian-auto-installer.sh
+./install.sh
 ```
 
-## Services on my stack
+## 
+
+## Services Available
 
 | Service | Description |
 |--|--|
-| [bazarr]("#") | Tool for managing subtitles on your media server. |
-| [cloudflared]("#") | Used to expose services through a ZTNA network. |
+| [bazarr](_archive/bazarr/readme.md) | Tool for manage subtitles on your media server. |
+| [cloudflared](_archive/cloudflared/readme.md) | Used to expose services through a ZTNA network. |
 | [compress-&-encrypt]("#") | bash script that generate a `.zip` file  |
 | [deluge]("#") | Torrent client |
 | [docmost]("#") |  |
 | [doplar]("#") |  |
 | [duckdns]("#") | Free DNS service. |
 | [duplicati]("#") | backup tool |
-| [emby]("#") | The best app for managing streams (in my opinion). It integrates with Jellyseerr, Sonarr, and Radarr. |
+| [emby]("#") | The best app for watch stream (in my opinion). It integrates with Jellyseerr, Sonarr, and Radarr. |
 | [filebrowser]("#") | A simple HTTP file share that allows users to upload their files. |
 | [gitlab]("#") |  |
 | [homarr]("#") |  |
@@ -58,7 +60,7 @@ Just run the install command. It ll install docker and all dependencies to run t
 | [steam-rust]("#") |  |
 | [steam-valheim]("#") |  |
 | [stirling-tools]("#") | Similar to I Love PDF. |
-| [syncthing]("#") |  |
+| [syncthing]("#") | Tool to sync files across multiple computers |
 | [tdarr]("#") |  |
 | [traefik]("#") | another proxy manager. |
 | [Transmission]("#") | A lightweight torrent client. |
