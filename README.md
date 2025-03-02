@@ -11,11 +11,40 @@ Any Debian based linux distribution.
 Just run the install command. It ll install docker and all dependencies to run the services.
 
 ```bash
-./install.sh
+chmod +x install.sh
+./install.sh install
 ```
 
-## 
+## Usage
+inside the `_archive` folder are the services.
+just move the folder of the services that you want to run 1 level up
 
+```
+.
+├── README.md
+├── install.sh
+└── _archive
+    ├── bazarr
+    │   ├── docker-compose.yml
+    │   └── readme.md
+    └── twingate
+        └── docker-compose.yml
+```
+
+on this example twingate will be installed.
+```
+.
+├── README.md
+├── install.sh
+├── _archive
+│   └── bazarr
+│       ├── docker-compose.yml
+│       └── readme.md
+└── twingate
+    ├── docker-compose.yml
+    └── readme.md
+```
+---
 ## Services Available
 
 | Service | Description |
@@ -24,7 +53,7 @@ Just run the install command. It ll install docker and all dependencies to run t
 | [cloudflared](_archive/cloudflared/readme.md) | Used to expose services through a ZTNA network. |
 | [compress-&-encrypt]("#") | bash script that generate a `.zip` file  |
 | [deluge]("#") | Torrent client |
-| [docmost]("#") |  |
+| [docmost]("#") |  Used for taking notes. Very similar to Notion but open source. |
 | [doplar]("#") |  |
 | [duckdns]("#") | Free DNS service. |
 | [duplicati]("#") | backup tool |
@@ -71,5 +100,4 @@ Just run the install command. It ll install docker and all dependencies to run t
 
 | Service | Description |
 |--|--|
-| [docmost]("#") | Used for taking notes. Very similar to Notion but open source. |
 | [nginx-proxy-manager]("#") | A highly recommended proxy manager. |

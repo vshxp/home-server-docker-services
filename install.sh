@@ -90,20 +90,6 @@ check_docker_network() {
   fi
 }
 
-check_hsds-cli_version() {
-  # Function to check the hsds-cli version
-  # If the version is not the latest, update it
-
-  local latest_version=$(curl -s https://api.github.com/repos/vshxp/home-server-docker-services/releases/latest | grep tag_name | cut -d '"' -f 4)
-  local current_version=$(hsds-cli version)
-
-  if [[ "$latest_version" < "$current_version" ]]; then
-    echo "New version available: $latest_version."
-  else
-    echo "hsds-cli is the latest version."
-  fi
-}
-
 pull_docker_images_parallel(){
   for dir in ./*; do
     if directory_is_valid "$dir"; then
@@ -246,7 +232,7 @@ is_clean() {
 
 check_hsds_already_installed() {
   # Check if hsds-cli is already installed
-  if command -v hsds-cli &>/dev/null; then
+  if command -v hsds &>/dev/null; then
     echo "[OK] - hsds-cli is already installed."
     return 0
   else
@@ -347,9 +333,8 @@ is_update() {
 }
 
 install_hsds-cli(){
-  latest_version=$(curl -s https://api.github.com/repos/vshxp/home-server-docker-services/releases/latest | grep tag_name | cut -d '"' -f 4)
-  echo "Installing hsds-cli v${latest_version}..."
-  sudo curl -sL "https://raw.githubusercontent.com/vshxp/home-server-docker-services/refs/tags/${latest_version}/debian-auto-installer.sh" -o /usr/local/bin/hsds
+  echo "Installing hsds-cli v$(version)..."
+  sudo sudo cp ./install.sh /usr/local/bin/hsds
   sudo chmod +x /usr/local/bin/hsds
 }
 
@@ -368,8 +353,8 @@ is_help() {
     echo "hsds-cli v$(version)"
     echo "---------------------------"
     echo ""
-    echo "Usage: $0 {destroy | stop | pull | setup | clean | update | parallel | help}"
-    echo "Example: $0 setup"
+    echo "Usage: hsds {destroy | stop | pull | setup | clean | update | parallel | help}"
+    echo "Example: hsds setup"
     echo ""
     echo "Options:"
     echo " - destroy: Destroy the Docker images ( docker compose down )"
@@ -384,7 +369,7 @@ is_help() {
     echo ""
     echo "Optional parameters:"
     echo " - quiet: Install requirements and containers without confirmation"
-    echo "Example: $0 setup quiet"
+    echo "Example: hsds setup quiet"
     echo ""
     exit 0
   fi
