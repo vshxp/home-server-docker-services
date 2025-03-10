@@ -6,7 +6,7 @@ confirm_action() {
     return 0
   else
     echo "Operation canceled."
-    return 1
+    exit 0
   fi
 }
 
@@ -61,7 +61,7 @@ check_docker_compose() {
     echo "  [OK] - docker composed is installed."
   else
      if [[ "$1" != "quiet" ]]; then
-      install_docker_compose 
+      install_docker_compose
     else
       if confirm_action "Do you want to INSTALL docker?"; then
         install_docker_compose
@@ -71,10 +71,10 @@ check_docker_compose() {
 }
 
 install_docker_compose(){
-    if confirm_action "Are you sure you want to INSTALL docker?"; then
-      sudo apt install docker-compose -y  &>/dev/null
-      echo '[DONE] Docker Compose Installed'
-    fi
+  if confirm_action "Are you sure you want to INSTALL docker?"; then
+    sudo apt install docker-compose -y  &>/dev/null
+    echo '[DONE] Docker Compose Installed'
+  fi
 }
 
 check_docker_network() {
@@ -105,7 +105,7 @@ pull_docker_images_parallel(){
 }
 
 perform_docker_pull() {
-  docker pull $1 > /dev/null
+  docker pull $1 &>/dev/null
 }
 
 docker_compose_pull(){
@@ -154,22 +154,20 @@ destroy_environment() {
 }
 
 clean_environment(){
-  if confirm_action "Are you sure you want to CLEAN the system?"; then
-    docker system prune -f
-    docker image prune -a
-    docker volume prune -f
-    docker network prune -f
-    sudo rm -rf ~/.local/share/Trash/*
-    sudo rm -rf /var/lib/docker/volumes/*
-    sudo rm -rf /var/lib/docker/network/files/*
-    sudo rm -rf /var/lib/docker/containers/*
-    sudo rm -rf /var/lib/docker/image/*
-    echo "Cleaning system..."
-    sudo apt autoremove -y
-    sudo apt autoclean -y
-    sudo apt clean -y
-    echo "Clean completed."
-  fi
+  docker system prune -f
+  docker image prune -a -f
+  docker volume prune -f
+  docker network prune -f
+  sudo rm -rf ~/.local/share/Trash/*
+  sudo rm -rf /var/lib/docker/volumes/*
+  sudo rm -rf /var/lib/docker/network/files/*
+  sudo rm -rf /var/lib/docker/containers/*
+  sudo rm -rf /var/lib/docker/image/*
+  echo "Cleaning system..."
+  sudo apt autoremove -y
+  sudo apt autoclean -y
+  sudo apt clean -y
+  echo "Clean completed."
 }
 
 is_destroy() {
@@ -224,10 +222,13 @@ is_setup() {
 
 is_clean() {
   # Check if the auto_clean parameter was passed to the script
-  if [[ "$1" == "clean" ]]; then
-    clean_environment
-    exit 0
+  if [[ "$1" == "clean" && "$2" != "quiet" ]]; then
+    if confirm_action "Are you sure you want to CLEAN the system?"; then
+      clean_environment
+      exit 0
+    fi
   fi
+  clean_environment
 }
 
 check_hsds_already_installed() {
@@ -248,7 +249,7 @@ check_hsds_already_installed() {
 
 is_install() {
   # Check if the auto_install parameter was passed to the script
-  if [[ "$1" == "install" ]]; then
+  if [[ "$1" == "hsds-cli" ]]; then
     check_hsds_already_installed
   fi
 }
@@ -338,6 +339,18 @@ install_hsds-cli(){
   sudo chmod +x /usr/local/bin/hsds
 }
 
+is_uninstall(){
+  # Check if the auto_uninstall parameter was passed to the script
+  if [[ "$1" == "uninstall" ]]; then
+    if confirm_action "Are you sure you want to UNINSTALL hsds-cli?"; then
+      echo "Uninstalling hsds-cli..."
+      sudo rm /usr/local/bin/hsds
+      echo "hsds-cli uninstalled."
+      exit 0
+    fi
+  fi
+}
+
 is_list() {
   # Check if the list parameter was passed to the script
   if [[ "$1" == "list" ]]; then
@@ -380,20 +393,41 @@ version() {
 }
 
 main() {
-  if [[ -z "$1" || ! "$1" =~ ^("destroy"|"stop"|"pull"|"setup"|"clean"|"install"|"update"|"pull-parallel"|"list"|"help")$ ]]; then
-    is_help "help"
-  else
-    is_destroy $1
-    is_stop $1
-    is_pull_parallel $1
-    is_pull $1
-    is_setup $@
-    is_clean $1
-    is_update $1
-    is_help $1
-    is_list $1
-    is_install $1
-  fi 
+  case "$1" in
+    "destroy")
+      is_destroy "$1"
+      ;;
+    "stop")
+      is_stop "$1"
+      ;;
+    "pull-parallel")
+      is_pull_parallel "$1"
+      ;;
+    "pull")
+      is_pull "$1"
+      ;;
+    "setup")
+      is_setup "$@"
+      ;;
+    "clean")
+      is_clean "$@"
+      ;;
+    "update")
+      is_update "$1"
+      ;;
+    "list")
+      is_list "$1"
+      ;;
+    "hsds-cli")
+      is_install "$1"
+      ;;
+    "uninstall")
+      is_uninstall "$1"
+      ;;
+    "help" | *)
+      is_help "help"
+      ;;
+  esac
 }
 
 main "$@"

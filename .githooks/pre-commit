@@ -1,0 +1,15 @@
+#!/bin/bash
+
+cyan='\033[36m'
+no_color='\033[0m'
+green='\033[32m'
+
+if [ -f "../version" ]; then
+    echo "pre-commit: Running pre-commit tasks..."
+    echo "pre-commit: [${green}OK${no_color}] Version file exists."
+    echo "                 Version: ${green}$(cat ../version)${no_color}"
+    echo "pre-commit: done."
+else
+    echo "pre-commit: ${cyan}version file not found.${no_color}"
+fi
+echo "pre-commit tasks finished."

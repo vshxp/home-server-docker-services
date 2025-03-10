@@ -1,0 +1,21 @@
+name: Application Release Pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches:
+      - main
+
+permissions:
+  contents: write
+  packages: read
+  actions: read
+
+jobs:
+  pipeline:
+    name: Pipeline 
+    uses: vshxp/shared-pipelines/.github/workflows/pipeline-validate-and-release.yml@main
