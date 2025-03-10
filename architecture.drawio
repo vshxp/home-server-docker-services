@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="RiPDyhCxWDPU11BnjIRP" name="Readme">
-        <mxGraphModel dx="573" dy="687" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="962" dy="584" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -56,12 +56,12 @@
         </mxGraphModel>
     </diagram>
     <diagram id="U0cBu_YSkR7BM3933Cyo" name="Hardware">
-        <mxGraphModel dx="573" dy="687" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="962" dy="584" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="42" value="Proxmox" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_on_premise;strokeColor=#5A6C86;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#5A6C86;dashed=0;spacingTop=0;" parent="1" vertex="1">
-                    <mxGeometry x="78" y="281" width="225" height="260" as="geometry"/>
+                    <mxGeometry x="76.5" y="263" width="225" height="260" as="geometry"/>
                 </mxCell>
                 <mxCell id="43" value="&lt;font color=&quot;#d45b07&quot;&gt;&lt;b&gt;Virtual Machine&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;sketch=0;align=center;verticalAlign=top;strokeColor=#D45B07;dashed=1;" parent="42" vertex="1">
                     <mxGeometry x="11" y="46" width="194" height="140" as="geometry"/>

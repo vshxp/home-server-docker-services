@@ -17,5 +17,5 @@ permissions:
 
 jobs:
   pipeline:
-    name: Pipeline 
+    name: Pipeline
     uses: vshxp/shared-pipelines/.github/workflows/pipeline-validate-and-release.yml@main
