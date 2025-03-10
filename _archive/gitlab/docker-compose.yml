@@ -10,9 +10,9 @@ services:
         gitlab_rails['initial_root_password'] = ${GITLAB_ROOT_PASSWORD}
         puma['worker_processes'] = 0
     volumes:
-      - ~/Storage/.Docker/gitlab/server/config:/etc/gitlab
-      - ~/Storage/.Docker/gitlab/server/logs:/var/log/gitlab
-      - ~/Storage/.Docker/gitlab/server/data:/var/opt/gitlab
+      - /Storage/.Docker/gitlab/server/config:/etc/gitlab
+      - /Storage/.Docker/gitlab/server/logs:/var/log/gitlab
+      - /Storage/.Docker/gitlab/server/data:/var/opt/gitlab
     ports:
       - '8088:8088'
 
