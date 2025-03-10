@@ -4,10 +4,10 @@ services:
     image: haveagitgat/tdarr
     container_name: tdarr
     volumes:
-      - '~/Storage/Tv-Shows:/home/Tdarr/Media/tv-shows'
-      - '~/Storage/Docker/tdadd/app:/app/server'
-      - '~/Storage/Docker/tdadd/configs:/app/configs'
-      - '~/Storage/Docker/tdadd/logs:/app/logs'
+      - '/Storage/Media/tv-shows:/home/Tdarr/Media/tv-shows'
+      - '/Storage/.Docker/tdadd/app:/app/server'
+      - '/Storage/.Docker/tdadd/configs:/app/configs'
+      - '/Storage/.Docker/tdadd/logs:/app/logs'
     environment:
       - serverIP=0.0.0.0
       - webUIPort=8265

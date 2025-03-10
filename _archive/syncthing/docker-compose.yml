@@ -9,8 +9,9 @@ services:
       - PGID=1000
       - TZ="America/Sao_Paulo"
     volumes:
-      - ~/Storage/Docker/syncthing/config:/config
-      - ~/Storage/Docker/syncthing/data:/data
+      - /Storage/.Docker/syncthing/config:/config
+      - /Storage/Sync/${USER_01}:/data/${USER_01}
+      - /Storage/Sync/${USER_02}:/data/${USER_02}
     ports:
       - 8384:8384
       - 22000:22000/tcp

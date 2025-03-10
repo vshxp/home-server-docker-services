@@ -13,7 +13,7 @@ services:
           memory: 1024M
     labels:
       - io.portainer.accesscontrol.public
-        - traefik.enable=true
+      - traefik.enable=true
       - traefik.http.routers.jdownloader.rule=Host(`${PRIVATE_DOMAIN}`) || Host(`${PUBLIC_DOMAIN}`)
       - traefik.http.services.jdownloader.loadbalancer.server.port=5800
     networks:
