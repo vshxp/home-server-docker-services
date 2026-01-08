@@ -1,0 +1,16 @@
+services:
+  megacmd:
+    build:
+      context: .
+      args:
+        PUID: ${PUID:-1000}
+        PGID: ${PGID:-1000}
+    container_name: megacmd
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ${LOCAL_DATA_PATH:-./data}:/data
+      - /etc/machine-id:/etc/machine-id:ro
+    stdin_open: true
+    tty: true
