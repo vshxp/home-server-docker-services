@@ -130,6 +130,7 @@ Example: hsds setup quiet
 | [Seafile](https://www.seafile.com/) | High-performance file sync | [docs/seafile.md](docs/seafile.md) |
 | [Syncthing](https://syncthing.net/) | Continuous file synchronization | [docs/syncthing.md](docs/syncthing.md) |
 | [File Browser](https://filebrowser.org/) | Web-based file management | [docs/filebrowser.md](docs/filebrowser.md) |
+| [Samba](https://www.samba.org/) | SMB/CIFS network file sharing with TimeMachine support | [docs/samba.md](docs/samba.md) |
 
 ### Backup & Recovery
 
@@ -220,7 +221,7 @@ Example: hsds setup quiet
 |----------|----------|
 | **Media** | Emby, Jellyfin, Jellyseerr, *arr stack |
 | **Downloads** | qBittorrent, Transmission, Deluge, JDownloader2 |
-| **Cloud Storage** | Nextcloud, ownCloud, Seafile, Syncthing |
+| **Cloud Storage** | Nextcloud, ownCloud, Seafile, Syncthing, Samba |
 | **Backup** | Duplicati, Kopia, Compress & Encrypt |
 | **Network** | Traefik, NPM, Cloudflared, Twingate, Pi-hole |
 | **Monitoring** | Uptime Kuma, Speedtest Tracker, Homepage |
